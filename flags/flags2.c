@@ -6,12 +6,9 @@
 */
 #include "../include/my_printf.h"
 
-int print_int(va_list list, int *compt, int *list_flagscompt)
-{
-    int nb;
-    int precision;
 
-    nb = va_arg(list, int);
+static void check_flags_int(long nb, int *compt, int *list_flagscompt)
+{
     if (list_flagscompt[4] > 0 && nb > 0) {
         my_putchar('+');
         *compt += 1;
@@ -19,6 +16,16 @@ int print_int(va_list list, int *compt, int *list_flagscompt)
         my_putchar(' ');
         *compt += 1;
     }
+}
+
+int print_int(va_list list, int *compt, int *list_flagscompt)
+{
+    int nb;
+    int precision;
+
+    nb = va_arg(list, int);
+    nb = check_int(nb, list_flagscompt);
+    check_flags_int(nb, compt, list_flagscompt);
     if ( list_flagscompt[5] > my_intlen(nb)) {
         precision = list_flagscompt[5];
         my_putnbr_prec(nb, precision);
@@ -40,6 +47,7 @@ int print_oct(va_list list, int *compt, int *list_flagscompt)
         *compt += 1;
     }
     nb = va_arg(list, int);
+    nb = check_int_u(nb, list_flagscompt);
     if ( list_flagscompt[5] >= 0) {
         precision = list_flagscompt[5];
         *compt += my_put_convert_base_prec(nb, "01234567", precision);
@@ -54,6 +62,7 @@ int print_dec(va_list list, int *compt, int *list_flagscompt)
     int precision;
 
     nb = va_arg(list, int);
+    nb = check_int_u(nb, list_flagscompt);
     if ( list_flagscompt[5] >= 0) {
         precision = list_flagscompt[5];
         *compt += my_put_convert_base_prec(nb, "0123456789", precision);
@@ -72,6 +81,7 @@ int print_hex(va_list list, int *compt, int *list_flagscompt)
         *compt += 2;
     }
     nb = va_arg(list, int);
+    nb = check_int_u(nb, list_flagscompt);
     if ( list_flagscompt[5] >= 0) {
         precision = list_flagscompt[5];
         *compt += my_put_convert_base_prec(nb, "0123456789abcdef", precision);
@@ -90,6 +100,7 @@ int print_hex_maj(va_list list, int *compt, int *list_flagscompt)
         *compt += 2;
     }
     nb = va_arg(list, int);
+    nb = check_int_u(nb, list_flagscompt);
     if ( list_flagscompt[5] >= 0) {
         precision = list_flagscompt[5];
         *compt += my_put_convert_base_prec(nb, "0123456789ABCDEF", precision);

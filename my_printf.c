@@ -6,18 +6,28 @@
 */
 #include "include/my_printf.h"
 
-static void print_suite(const char *format, va_list list, int *compt,
+static int print_suite(const char *format, va_list list, int *compt,
     int *list_flagscompt)
 {
+    int i = 0;
+
+    for ( int p = 0; list_modi[p]; p++) {
+        if (list_modi[p] == format[i]) {
+            list_flagscompt[6 + p] += 1;
+            i += 1;
+            p = -1;
+        }
+    }
     for ( int j = 0; fonc_list[j].c; j++) {
-        if (format[0] == fonc_list[j].c)
+        if (format[i] == fonc_list[j].c)
             fonc_list[j].f(list, compt, list_flagscompt);
     }
+    return i;
 }
 
 void print(const char *format, va_list list, int *compt, int *i)
 {
-    int list_flagscompt[] = { 0, 0, 0, 0, 0, -1, 0};
+    int list_flagscompt[] = { 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0};
 
     for ( int j = 0; list_flags[j]; j++) {
         if (format[*i] == list_flags[j]) {
@@ -34,7 +44,7 @@ void print(const char *format, va_list list, int *compt, int *i)
         if (format[*i] == '0')
             *i += 1;
     }
-    print_suite((format + *i), list, compt, list_flagscompt);
+    *i += print_suite((format + *i), list, compt, list_flagscompt);
 }
 
 int my_printf(const char *format, ...)

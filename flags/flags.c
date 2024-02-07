@@ -7,13 +7,8 @@
 */
 #include "../include/my_printf.h"
 
-int print_float(va_list list, int *compt, int *list_flagscompt)
+static void check_flags_float(long double nb, int *compt, int *list_flagscompt)
 {
-    double nb;
-    int precision = 6;
-
-    nb = va_arg(list, double);
-    
     if (list_flagscompt[4] > 0 && nb > 0) {
         my_putchar('+');
         *compt += 1;
@@ -21,6 +16,16 @@ int print_float(va_list list, int *compt, int *list_flagscompt)
         my_putchar(' ');
         *compt += 1;
     }
+}
+
+int print_float(va_list list, int *compt, int *list_flagscompt)
+{
+    double nb;
+    int precision = 6;
+
+    nb = va_arg(list, double);
+    nb = check_float(nb, list_flagscompt);
+    check_flags_float(nb, compt, list_flagscompt);
     if (list_flagscompt[5] == 0) {
         nb = nb > 0 ? nb + 0.5 : nb - 0.5;
         my_put_nbr((int)nb);

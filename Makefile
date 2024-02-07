@@ -23,6 +23,7 @@ SRC =	$(RESSOURCES_PATH)/my_convert_base.c \
 	$(FLAGS_PATH)/flags2.c \
 	$(FLAGS_PATH)/flags3.c \
 	$(FLAGS_PATH)/flags4.c \
+	$(FLAGS_PATH)/check_mod.c \
 	my_printf.c
 
 OBJ = $(SRC:.c=.o)
