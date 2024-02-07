@@ -11,11 +11,11 @@
 long check_int(va_list list, int *list_flagscompt)
 {
     if ( list_flagscompt[6] == 1)
-        return va_arg(list, int);
+        return (short)va_arg(list, int);
     if ( list_flagscompt[6] == 2)
         return va_arg(list, int);
     if ( list_flagscompt[7] == 1 || list_flagscompt[7] == 2)
-        return (long)va_arg(list, long);
+        return va_arg(list, long);
     if ( list_flagscompt[8] == 1)
         return va_arg(list, intmax_t);
     if ( list_flagscompt[9] == 1)
@@ -30,7 +30,7 @@ long check_int(va_list list, int *list_flagscompt)
 unsigned long check_int_u(va_list list, int *list_flagscompt)
 {
     if ( list_flagscompt[6] == 1)
-        return va_arg(list, unsigned int);
+        return (unsigned short)va_arg(list, unsigned int);
     if ( list_flagscompt[6] == 2)
         return va_arg(list, unsigned int);
     if ( list_flagscompt[7] == 1 || list_flagscompt[7] == 2)
