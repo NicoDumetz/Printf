@@ -28,3 +28,12 @@ int print_adresse(va_list list, int *compt)
     *compt += my_put_convert_base_ptr(nb, "0123456789abcdef");
     return 1;
 }
+
+int print_compt(va_list list, int *compt)
+{
+    int *var;
+
+    var = va_arg(list, int *);
+    *var = *compt;
+    return 1;
+}
