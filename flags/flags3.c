@@ -6,19 +6,24 @@
 */
 #include "../include/my_printf.h"
 
-static void print_width_e(int *compt, int *list_flagscompt, long double nb,
+static void print_width_e(int *compt, int *list_flagscompt, long double *nb,
     int char_print)
 {
     int width = list_flagscompt[12];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
-    if (list_flagscompt[4] > 0 && nb > 0) {
+    char_print += *nb < 0 ? 1 : 0;
+    if ( zero == '0') {
+        my_putchar('-');
+        *nb *= -1;
+    }
+    if (list_flagscompt[4] > 0 && *nb > 0) {
         char_print++;
-    } else if ( list_flagscompt[3] > 0 && nb > 0)
+    } else if ( list_flagscompt[3] > 0 && *nb > 0)
         char_print++;
-    if ( width < my_intlen(nb) + char_print + 1)
+    if ( width < char_print + 6)
         return;
-    for (int i = 0; i < width - (my_intlen(nb) + char_print + 4); i++) {
+    for (int i = 0; i < width - (char_print + 6); i++) {
         my_putchar(zero);
         *compt += 1;
     }
@@ -35,11 +40,11 @@ int print_science_lowercase(va_list list, int *compt, int *list_flagscompt)
         precision = list_flagscompt[5];
     char_print = precision;
     if ( list_flagscompt[2] == 0)
-        print_width_e(compt, list_flagscompt, nb, char_print);
+        print_width_e(compt, list_flagscompt, &nb, char_print);
     check_flags_float(nb, compt, list_flagscompt);
     *compt += my_put_sci_nbr(nb, 0, precision);
     if ( list_flagscompt[2] > 0)
-        print_width_e(compt, list_flagscompt, nb, char_print);
+        print_width_e(compt, list_flagscompt, &nb, char_print);
     return 1;
 }
 
@@ -54,11 +59,11 @@ int print_science_uppercase(va_list list, int *compt, int *list_flagscompt)
         precision = list_flagscompt[5];
     char_print = precision;
     if ( list_flagscompt[2] == 0)
-        print_width_e(compt, list_flagscompt, nb, char_print);
+        print_width_e(compt, list_flagscompt, &nb, char_print);
     check_flags_float(nb, compt, list_flagscompt);
     *compt += my_put_sci_nbr(nb, 1, precision);
     if ( list_flagscompt[2] > 0)
-        print_width_e(compt, list_flagscompt, nb, char_print);
+        print_width_e(compt, list_flagscompt, &nb, char_print);
     return 1;
 }
 
