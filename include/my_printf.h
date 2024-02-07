@@ -37,7 +37,7 @@ int print_dec(va_list list, int *compt);
 int print_hex(va_list list, int *compt);
 int print_hex_maj(va_list list, int *compt);
 int print_science(va_list list, int *compt);
-int my_put_sci_nbr(float nb);
+int my_put_sci_nbr(float nb, int upper);
 int print_hex(va_list list, int *compt);
 int print_adresse(va_list list, int *compt);
 int my_put_convert_base_ptr(unsigned long long nb, char *base);
@@ -52,7 +52,8 @@ static const disp_t fonc_list[] = {
     {'u', &print_dec},
     {'x', &print_hex},
     {'X', &print_hex_maj},
-    {'e', &print_science},
+    {'e', &print_science_lowercase},
+    {'E', &print_science_uppercase},
     {'p', &print_adresse},
     {0, NULL}
 };

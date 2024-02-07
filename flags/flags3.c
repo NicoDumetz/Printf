@@ -7,9 +7,15 @@
 */
 #include "../include/my_printf.h"
 
-int print_science(va_list list, int *compt)
+int print_science_lowercase(va_list list, int *compt)
 {
-    *compt += my_put_sci_nbr(va_arg(list, double));
+    *compt += my_put_sci_nbr(va_arg(list, double), 0);
+    return 1;
+}
+
+int print_science_uppercase(va_list list, int *compt)
+{
+    *compt += my_put_sci_nbr(va_arg(list, double), 1);
     return 1;
 }
 
