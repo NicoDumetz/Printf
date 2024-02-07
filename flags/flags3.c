@@ -1,4 +1,3 @@
-
 /*
 ** EPITECH PROJECT, 2023
 ** flags3
@@ -22,6 +21,7 @@ int print_science_uppercase(va_list list, int *compt)
 int print_adresse(va_list list, int *compt)
 {
     unsigned long long nb;
+
     my_putstr("0x");
     *compt += 2;
     nb = va_arg(list, unsigned long long);
