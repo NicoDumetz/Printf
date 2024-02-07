@@ -69,6 +69,6 @@ int print_g(va_list list, int *compt, int *list_flagscompt)
 
     if ( list_flagscompt[5] >= 0)
         precision = list_flagscompt[5];
-    *compt += point_g(nb, precision);
+    *compt += point_g(nb, precision, 0);
     return 1;
 }

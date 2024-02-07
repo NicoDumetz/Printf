@@ -31,7 +31,7 @@ void print(const char *format, va_list list, int *compt, int *i)
         list_flagscompt[5] = my_getnbr(format + *i);
         if (list_flagscompt[5] != 0)
             *i += my_intlen(list_flagscompt[5]);
-        else
+        if (format[*i] == '0')
             *i += 1;
     }
     print_suite((format + *i), list, compt, list_flagscompt);
