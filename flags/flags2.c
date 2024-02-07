@@ -33,47 +33,67 @@ int print_int(va_list list, int *compt, int *list_flagscompt)
 int print_oct(va_list list, int *compt, int *list_flagscompt)
 {
     int nb;
+    int precision;
 
     if (list_flagscompt[0] > 0) {
         my_putstr("0");
         *compt += 1;
     }
     nb = va_arg(list, int);
-    *compt += my_put_convert_base(nb, "01234567");
+    if ( list_flagscompt[5] >= 0) {
+        precision = list_flagscompt[5];
+        *compt += my_put_convert_base_prec(nb, "01234567", precision);
+    } else
+        *compt += my_put_convert_base(nb, "01234567");
     return 1;
 }
 
 int print_dec(va_list list, int *compt, int *list_flagscompt)
 {
     int nb;
+    int precision;
 
     nb = va_arg(list, int);
-    *compt += my_put_convert_base(nb, "0123456789");
+    if ( list_flagscompt[5] >= 0) {
+        precision = list_flagscompt[5];
+        *compt += my_put_convert_base_prec(nb, "0123456789", precision);
+    } else
+        *compt += my_put_convert_base(nb, "0123456789");
     return 1;
 }
 
 int print_hex(va_list list, int *compt, int *list_flagscompt)
 {
     int nb;
+    int precision;
 
     if (list_flagscompt[0] > 0) {
         my_putstr("0x");
         *compt += 2;
     }
     nb = va_arg(list, int);
-    *compt += my_put_convert_base(nb, "0123456789abcdef");
+    if ( list_flagscompt[5] >= 0) {
+        precision = list_flagscompt[5];
+        *compt += my_put_convert_base_prec(nb, "0123456789abcdef", precision);
+    } else
+        *compt += my_put_convert_base(nb, "0123456789abcdef");
     return 1;
 }
 
 int print_hex_maj(va_list list, int *compt, int *list_flagscompt)
 {
     int nb;
+    int precision;
 
     if (list_flagscompt[0] > 0) {
         my_putstr("0X");
         *compt += 2;
     }
     nb = va_arg(list, int);
-    *compt += my_put_convert_base(nb, "0123456789ABCDEF");
+    if ( list_flagscompt[5] >= 0) {
+        precision = list_flagscompt[5];
+        *compt += my_put_convert_base_prec(nb, "0123456789ABCDEF", precision);
+    } else
+        *compt += my_put_convert_base(nb, "0123456789ABCDEF");
     return 1;
 }

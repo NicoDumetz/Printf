@@ -20,7 +20,12 @@ int print_float(va_list list, int *compt, int *list_flagscompt)
         my_putchar(' ');
         *compt += 1;
     }
-    if ( list_flagscompt[5] >= 0)
+    if (list_flagscompt[5] == 0) {
+        nb = nb > 0 ? nb + 0.5 : nb - 0.5;
+        my_put_nbr((int)nb);
+        *compt += my_intlen(nb);
+        return 1;
+    } else if ( list_flagscompt[5] > 0)
         precision = list_flagscompt[5];
     *compt += my_put_float(nb, precision);
     return 1;

@@ -52,3 +52,26 @@ int my_put_convert_base_ptr(unsigned long long nb, char *base)
     my_putstr(res);
     return my_strlen(res);
 }
+
+int my_put_convert_base_prec(unsigned int nb, char *base, int precision)
+{
+    int len = my_strlen(base);
+    char res[30000];
+    int index;
+    int compt = 0;
+
+    for (index = 0; nb > 0; index++) {
+        res[index] = base[nb % len];
+        nb /= len;
+    }
+    res[index] = '\0';
+    my_revstr_convert(res);
+    if ( precision > my_strlen(res)) {
+        for (int i; i < precision - my_strlen(res); i++) {
+            my_putchar('0');
+            compt++;
+        }
+    }
+    my_putstr(res);
+    return my_strlen(res) + compt;
+}
