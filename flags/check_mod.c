@@ -22,6 +22,8 @@ long check_int(va_list list, int *list_flagscompt)
         return va_arg(list, size_t);
     if ( list_flagscompt[10] == 1)
         return va_arg(list, ptrdiff_t);
+    if (list_flagscompt[12] == 1)
+        return va_arg(list, long);
     return va_arg(list, int);
 }
 
@@ -39,6 +41,8 @@ unsigned long check_int_u(va_list list, int *list_flagscompt)
         return va_arg(list, size_t);
     if ( list_flagscompt[10] == 1)
         return va_arg(list, ptrdiff_t);
+    if (list_flagscompt[12] == 1)
+        return va_arg(list, unsigned long);
     return va_arg(list, unsigned int);
 }
 

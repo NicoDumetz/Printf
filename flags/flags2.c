@@ -9,7 +9,7 @@
 
 static void print_width(int *compt, int *list_flagscompt, char *str)
 {
-    int width = list_flagscompt[12];
+    int width = list_flagscompt[13];
     int char_print = 0;
     int zero = ' ';
 
@@ -30,7 +30,7 @@ static void print_width(int *compt, int *list_flagscompt, char *str)
 
 static void print_width_o(int *compt, int *list_flagscompt, char *str)
 {
-    int width = list_flagscompt[12];
+    int width = list_flagscompt[13];
     int char_print = 0;
     int zero = ' ';
 
@@ -47,7 +47,7 @@ static void print_width_o(int *compt, int *list_flagscompt, char *str)
 
 static void print_width_d(int *compt, int *list_flagscompt, char *str)
 {
-    int width = list_flagscompt[12];
+    int width = list_flagscompt[13];
     int zero = ' ';
 
     if ( width < my_strlen(str))
@@ -136,7 +136,7 @@ int print_hex(va_list list, int *compt, int *list_flagscompt)
 
 static void print_width_maj(int *compt, int *list_flagscompt, char *str)
 {
-    int width = list_flagscompt[12];
+    int width = list_flagscompt[13];
     int char_print = 0;
     int zero = ' ';
 

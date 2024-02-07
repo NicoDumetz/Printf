@@ -34,12 +34,12 @@ static void get_width(const char *format, va_list list, int *i,
     int *list_flagscompt)
 {
     if ( format[*i] == '*') {
-        list_flagscompt[12] = va_arg(list, int);
+        list_flagscompt[13] = va_arg(list, int);
         *i += 1;
     } else {
-        list_flagscompt[12] = my_getnbr(format + *i);
-        if ( list_flagscompt[12] != 0)
-            *i += my_intlen(list_flagscompt[12]);
+        list_flagscompt[13] = my_getnbr(format + *i);
+        if ( list_flagscompt[13] != 0)
+            *i += my_intlen(list_flagscompt[13]);
     }
 }
 
@@ -52,7 +52,7 @@ static int value(int nb, int i)
 
 static int print(const char *format, va_list list, int *compt, int i)
 {
-    int list_flagscompt[] = { 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0};
+    int list_flagscompt[] = { 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     for ( int j = 0; list_flags[j]; j++) {
         if (format[i] == list_flags[j]) {
