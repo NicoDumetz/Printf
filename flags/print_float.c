@@ -8,10 +8,10 @@
 
 void check_flags_float(long double nb, int *compt, int *list_flagscompt)
 {
-    if (list_flagscompt[4] > 0 && nb > 0) {
+    if (list_flagscompt[4] > 0 && nb >= 0) {
         my_putchar('+');
         *compt += 1;
-    } else if ( list_flagscompt[3] > 0 && nb > 0) {
+    } else if ( list_flagscompt[3] > 0 && nb >= 0) {
         my_putchar(' ');
         *compt += 1;
     }
@@ -23,9 +23,9 @@ static void print_width(int *compt, int *list_flagscompt, long double nb,
     int width = list_flagscompt[13];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
-    if (list_flagscompt[4] > 0 && nb > 0) {
+    if (list_flagscompt[4] > 0 && nb >= 0) {
         char_print++;
-    } else if ( list_flagscompt[3] > 0 && nb > 0)
+    } else if ( list_flagscompt[3] > 0 && nb >= 0)
         char_print++;
     if ( width < my_intlen(nb) + char_print + 1)
         return;
@@ -41,9 +41,9 @@ static void print_width_int(int *compt, int *list_flagscompt, long nb,
     int width = list_flagscompt[13];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
-    if (list_flagscompt[4] > 0 && nb > 0) {
+    if (list_flagscompt[4] > 0 && nb >= 0) {
         char_print++;
-    } else if ( list_flagscompt[3] > 0 && nb > 0)
+    } else if ( list_flagscompt[3] > 0 && nb >= 0)
         char_print++;
     if ( width < my_intlen(nb) + char_print )
         return;

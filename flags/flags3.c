@@ -18,9 +18,9 @@ static void print_width_e(int *compt, int *list_flagscompt, long double *nb,
         my_putchar('-');
         *nb *= -1;
     }
-    if (list_flagscompt[4] > 0 && *nb > 0) {
+    if (list_flagscompt[4] > 0 && *nb >= 0) {
         char_print++;
-    } else if ( list_flagscompt[3] > 0 && *nb > 0)
+    } else if ( list_flagscompt[3] > 0 && *nb >= 0)
         char_print++;
     if ( width < char_print + 6)
         return;

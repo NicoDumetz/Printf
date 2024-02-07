@@ -15,9 +15,9 @@ static void print_width_a(int *compt, int *list_flagscompt, long double nb,
     int width_a = 7;
     int char_print = 0;
 
-    if (list_flagscompt[4] > 0 && nb > 0) {
+    if (list_flagscompt[4] > 0 && nb >= 0) {
         char_print++;
-    } else if ( list_flagscompt[3] > 0 && nb > 0)
+    } else if ( list_flagscompt[3] > 0 && nb >= 0)
         char_print++;
     if ( width < width_a + precision + char_print)
         return;
