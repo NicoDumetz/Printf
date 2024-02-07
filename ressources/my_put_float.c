@@ -22,16 +22,18 @@ int my_put_float(long double nb, int precision)
     int compt = my_intlen(ABS(nb));
 
     is_negative(&nb, &compt);
+    printf("%Lf\n", nb);
     for (int k = 0; k < precision; k++) {
         marge /= 10;
     }
-    nb += my_put_nbr(nb);
+    printf("printf debug%ld\n", (long)nb);
+    nb += my_put_nbr((long)nb);
     my_putchar('.');
     compt++;
     nb += marge;
     for (int index = 0; index < precision; index++) {
-        nb *= 10;
-        nb += my_put_nbr(nb);
+        nb *= (long double)10;
+        nb += my_put_nbr((long)nb);
         compt++;
     }
     return compt;

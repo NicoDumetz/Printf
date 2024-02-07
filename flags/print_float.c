@@ -53,12 +53,11 @@ static void print_width_int(int *compt, int *list_flagscompt, long nb,
 
 int print_float(va_list list, int *compt, int *list_flagscompt)
 {
-    double nb;
+    long double nb;
     int precision = 6;
     int char_print = precision;
 
-    nb = va_arg(list, double);
-    nb = check_float(nb, list_flagscompt);
+    nb = check_float(list, list_flagscompt);
     if (list_flagscompt[5] == 0) {
         nb = nb > 0 ? nb + 0.5 : nb - 0.5;
         print_width_int(compt, list_flagscompt, nb, 0);

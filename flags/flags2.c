@@ -20,6 +20,10 @@ static void print_width(int *compt, int *list_flagscompt, char *str)
         my_putchar(' ');
         *compt += 1;
     }
+    if (list_flagscompt[0] > 0) {
+        my_putstr("0x");
+        *compt += 2;
+    }
 }
 
 static void print_width_o(int *compt, int *list_flagscompt, char *str)
@@ -48,39 +52,42 @@ static void print_width_d(int *compt, int *list_flagscompt, char *str)
         my_putchar(' ');
         *compt += 1;
     }
+    if (list_flagscompt[0] > 0) {
+        my_putstr("0");
+        *compt += 1;
+    }
 }
 
 int print_oct(va_list list, int *compt, int *list_flagscompt)
 {
-    int nb;
+    long nb;
     int precision = list_flagscompt[5];
     char *str;
 
-    nb = va_arg(list, int);
-    nb = check_int_u(nb, list_flagscompt);
+    nb = check_int_u(list, list_flagscompt);
+    if ( list_flagscompt[6] == 2)
+        nb = (unsigned char)nb;
     if ( precision >= 0) {
         precision = list_flagscompt[0] > 0 ? precision - 1 : precision;
         str = my_put_convert_base_prec(nb, "01234567", precision);
     } else
         str = my_put_convert_base(nb, "01234567");
     print_width_o(compt, list_flagscompt, str);
-    if (list_flagscompt[0] > 0) {
-        my_putstr("0");
-        *compt += 1;
-    }
     my_putstr(str);
     *compt += my_strlen(str);
+    free(str);
     return 1;
 }
 
 int print_dec(va_list list, int *compt, int *list_flagscompt)
 {
-    int nb;
+    long nb;
     int precision;
     char *str;
 
-    nb = va_arg(list, int);
-    nb = check_int_u(nb, list_flagscompt);
+    nb = check_int_u(list, list_flagscompt);
+    if ( list_flagscompt[6] == 2)
+        nb = (unsigned char)nb;
     if ( list_flagscompt[5] >= 0) {
         precision = list_flagscompt[5];
         str = my_put_convert_base_prec(nb, "0123456789", precision);
@@ -89,29 +96,28 @@ int print_dec(va_list list, int *compt, int *list_flagscompt)
     print_width_d(compt, list_flagscompt, str);
     my_putstr(str);
     *compt += my_strlen(str);
+    free(str);
     return 1;
 }
 
 int print_hex(va_list list, int *compt, int *list_flagscompt)
 {
-    int nb;
+    long nb;
     int precision = 0;
     char *str;
 
-    nb = va_arg(list, int);
-    nb = check_int_u(nb, list_flagscompt);
+    nb = check_int_u(list, list_flagscompt);
+    if ( list_flagscompt[6] == 2)
+        nb = (unsigned char)nb;
     if ( list_flagscompt[5] >= 0) {
         precision = list_flagscompt[5];
         str = my_put_convert_base_prec(nb, "0123456789abcdef", precision);
     } else
         str = my_put_convert_base(nb, "0123456789abcdef");
     print_width(compt, list_flagscompt, str);
-    if (list_flagscompt[0] > 0) {
-        my_putstr("0x");
-        *compt += 2;
-    }
     my_putstr(str);
     *compt += my_strlen(str);
+    free(str);
     return 1;
 }
 
@@ -121,19 +127,17 @@ int print_hex_maj(va_list list, int *compt, int *list_flagscompt)
     int precision;
     char *str;
 
-    nb = va_arg(list, int);
-    nb = check_int_u(nb, list_flagscompt);
+    nb = check_int_u(list, list_flagscompt);
+    if ( list_flagscompt[6] == 2)
+        nb = (unsigned char)nb;
     if ( list_flagscompt[5] >= 0) {
         precision = list_flagscompt[5];
         str = my_put_convert_base_prec(nb, "0123456789ABCDEF", precision);
     } else
         str = my_put_convert_base(nb, "0123456789ABCDEF");
     print_width(compt, list_flagscompt, str);
-    if (list_flagscompt[0] > 0) {
-        my_putstr("0x");
-        *compt += 2;
-    }
     my_putstr(str);
     *compt += my_strlen(str);
+    free(str);
     return 1;
 }
