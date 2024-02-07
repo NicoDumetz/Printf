@@ -20,6 +20,7 @@ SRC =	$(RESSOURCES_PATH)/my_convert_base.c \
 	$(RESSOURCES_PATH)/point_g.c \
 	$(RESSOURCES_PATH)/my_getnbr.c \
 	$(RESSOURCES_PATH)/my_strcat.c \
+	$(RESSOURCES_PATH)/print_a.c \
 	$(FLAGS_PATH)/flags.c \
 	$(FLAGS_PATH)/flags2.c \
 	$(FLAGS_PATH)/flags3.c \

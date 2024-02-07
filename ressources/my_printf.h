@@ -57,6 +57,9 @@ unsigned long check_int_u(va_list list, int *list_flagscompt);
 long double check_float(va_list list, int *flagscompt);
 char *my_strcat(char *dest, char const *src);
 void check_flags_float(long double nb, int *compt, int *list_flagscompt);
+int point_a(double nb, int precision, char *base);
+int print_a(va_list list, int *compt, int *list_flagscompt);
+int print_a_maj(va_list list, int *compt, int *list_flagscompt);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
@@ -75,6 +78,8 @@ static const disp_t fonc_list[] = {
     {'g', &print_g},
     {'G', &print_g_maj},
     {'F', &print_float},
+    {'a', &print_a},
+    {'A', &print_a_maj},
     {0, NULL}
 };
 

@@ -45,7 +45,7 @@ int print_g(va_list list, int *compt, int *list_flagscompt)
 int print_g_maj(va_list list, int *compt, int *list_flagscompt)
 {
     int precision = 6;
-    double nb;
+    long double nb;
     int char_print = 0;
 
     nb = check_float(list, list_flagscompt);
@@ -57,5 +57,59 @@ int print_g_maj(va_list list, int *compt, int *list_flagscompt)
     *compt += point_g(nb, precision, 1);
     if ( list_flagscompt[2] > 0)
         print_width(compt, list_flagscompt, nb, char_print);
+    return 1;
+}
+
+static void print_width_a(int *compt, int *list_flagscompt, long double nb,
+    int precision)
+{
+    int width = list_flagscompt[12];
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
+    int width_a = 7;
+    int char_print = 0;
+
+    if (list_flagscompt[4] > 0 && nb > 0) {
+        char_print++;
+    } else if ( list_flagscompt[3] > 0 && nb > 0)
+        char_print++;
+    if ( width < width_a + precision + char_print)
+        return;
+    for (int i = 0; i < width - (width_a + precision + char_print); i++) {
+        my_putchar(zero);
+        *compt += 1;
+    }
+}
+
+int print_a(va_list list, int *compt, int *list_flagscompt)
+{
+    int precision = 13;
+    long double nb;
+
+    nb = check_float(list, list_flagscompt);
+    if ( list_flagscompt[5] >= 0)
+        precision = list_flagscompt[5];
+    if ( list_flagscompt[2] == 0)
+        print_width_a(compt, list_flagscompt, nb, precision);
+    check_flags_float(nb, compt, list_flagscompt);
+    *compt += point_a(nb, precision, "0123456789abcdefxp");
+    if ( list_flagscompt[2] > 0)
+        print_width_a(compt, list_flagscompt, nb, precision);
+    return 1;
+}
+
+int print_a_maj(va_list list, int *compt, int *list_flagscompt)
+{
+    int precision = 13;
+    long double nb;
+
+    nb = check_float(list, list_flagscompt);
+    if ( list_flagscompt[5] >= 0)
+        precision = list_flagscompt[5];
+    if ( list_flagscompt[2] == 0)
+        print_width_a(compt, list_flagscompt, nb, precision);
+    check_flags_float(nb, compt, list_flagscompt);
+    *compt += point_a(nb, precision, "0123456789ABCDEFXP");
+    if ( list_flagscompt[2] > 0)
+        print_width_a(compt, list_flagscompt, nb, precision);
     return 1;
 }
