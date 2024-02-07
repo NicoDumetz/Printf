@@ -33,6 +33,7 @@ int print_oct(va_list list, int *compt);
 int print_dec(va_list list, int *compt);
 int print_hex(va_list list, int *compt);
 int print_hex_maj(va_list list, int *compt);
+int my_put_sci_nbr(float nb);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
@@ -44,6 +45,7 @@ static const disp_t fonc_list[] = {
     {'u', &print_dec},
     {'x', &print_hex},
     {'X', &print_hex_maj},
+    {'e', &print_science},
     {0, NULL}
 };
 
