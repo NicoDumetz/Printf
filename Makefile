@@ -33,6 +33,10 @@ all: $(NAME)
 header:
 	cp $(RESSOURCES_PATH)/my_printf.h include
 
+test: $(NAME)
+	gcc main.c -L./ -lmy
+	./a.out
+
 $(NAME): header $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
