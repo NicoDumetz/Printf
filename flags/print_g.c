@@ -43,7 +43,7 @@ static int float_type(long double nb, long double precision, double *marge)
 static void e_print(int *compt, int *list_flagscompt, long double *nb,
     int precision)
 {
-    int width = list_flagscompt[12];
+    int width = list_flagscompt[13];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
     int char_print = precision;
 
@@ -67,8 +67,9 @@ static void e_print(int *compt, int *list_flagscompt, long double *nb,
 static void float_print(int *compt, int *list_flagscompt, long double nb,
     int precision)
 {
-    int width = list_flagscompt[12];
+    int width = list_flagscompt[13];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
+    double marge = 0.5;
     double merge = 0.5;
     int char_print = 0;
 
@@ -76,8 +77,8 @@ static void float_print(int *compt, int *list_flagscompt, long double nb,
         char_print++;
     } else if ( list_flagscompt[3] > 0 && nb >= 0)
         char_print++;
-    if ( width < float_type(nb,
-        precision - get_expos(ABS(nb)) - 1, &merge) + char_print)
+    if ( width <= float_type(nb,
+        precision - get_expos(ABS(nb)) - 1, &marge) + char_print)
         return;
     for (int i = 0; i < width - (float_type(nb,
         precision - get_expos(ABS(nb)) - 1, &merge) + char_print ); i++) {
