@@ -19,10 +19,14 @@ static int print_suite(const char *format, va_list list, int *compt,
         }
     }
     for ( int j = 0; fonc_list[j].c; j++) {
-        if (format[i] == fonc_list[j].c)
+        if (format[i] == fonc_list[j].c) {
             fonc_list[j].f(list, compt, list_flagscompt);
+            return i;
+        }
     }
-    return i;
+    write(1, "%", 1);
+    *compt += 1;
+    return -1;
 }
 
 static void get_width(const char *format, va_list list, int *i,
@@ -38,27 +42,34 @@ static void get_width(const char *format, va_list list, int *i,
     }
 }
 
-void print(const char *format, va_list list, int *compt, int *i)
+static int value(int nb, int i)
+{
+    if (nb < 0)
+        return 0;
+    return nb + i;
+}
+
+static int print(const char *format, va_list list, int *compt, int i)
 {
     int list_flagscompt[] = { 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0};
 
     for ( int j = 0; list_flags[j]; j++) {
-        if (format[*i] == list_flags[j]) {
+        if (format[i] == list_flags[j]) {
             list_flagscompt[j] += 1;
-            *i += 1;
+            i += 1;
             j = 0;
         }
     }
-    get_width(format, list, i, list_flagscompt);
-    if ( format[*i] == '.') {
-        *i += 1;
-        list_flagscompt[5] = my_getnbr(format + *i);
+    get_width(format, list, &i, list_flagscompt);
+    if ( format[i] == '.') {
+        i += 1;
+        list_flagscompt[5] = my_getnbr(format + i);
         if (list_flagscompt[5] != 0)
-            *i += my_intlen(list_flagscompt[5]);
-        if (format[*i] == '0')
-            *i += 1;
+            i += my_intlen(list_flagscompt[5]);
+        if (format[i] == '0')
+            i += 1;
     }
-    *i += print_suite((format + *i), list, compt, list_flagscompt);
+    return value(print_suite((format + i), list, compt, list_flagscompt), i);
 }
 
 int my_printf(const char *format, ...)
@@ -67,11 +78,12 @@ int my_printf(const char *format, ...)
     int compt = 0;
     int i;
 
+    if (error_handling(format))
+        return -1;
     va_start(list, format);
     for (i = 0; i < my_strlen(format); i++) {
         if (format[i] == '%') {
-            i++;
-            print(format, list, &compt, &i);
+            i += print(format + i, list, &compt, 1);
         } else
             compt += write(1, format + i, 1);
     }
