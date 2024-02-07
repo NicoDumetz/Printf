@@ -22,7 +22,7 @@ static void check_flags_int(long nb, int *compt, int *list_flagscompt)
 static void print_width_int(long nb, int char_print, int *compt
     , int *list_flagscompt)
 {
-    int width = list_flagscompt[13];
+    int width = list_flagscompt[12];
     int zero = ' ';
 
     char_print = nb < 0 ? char_print + 1 : char_print;

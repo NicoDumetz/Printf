@@ -20,7 +20,7 @@ void check_flags_float(long double nb, int *compt, int *list_flagscompt)
 static void print_width(int *compt, int *list_flagscompt, long double nb,
     int char_print)
 {
-    int width = list_flagscompt[13];
+    int width = list_flagscompt[12];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if (list_flagscompt[4] > 0 && nb > 0) {
@@ -38,7 +38,7 @@ static void print_width(int *compt, int *list_flagscompt, long double nb,
 static void print_width_int(int *compt, int *list_flagscompt, long nb,
     int char_print)
 {
-    int width = list_flagscompt[13];
+    int width = list_flagscompt[12];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if (list_flagscompt[4] > 0 && nb > 0) {

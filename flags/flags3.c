@@ -2,15 +2,14 @@
 ** EPITECH PROJECT, 2023
 ** flags3
 ** File description:
-** hold function called in my_printf.c
-** that put all modifier flags... for subfunction
+** hold function called in my_printf.c                                                                                                                                                                                                       ** that put all modifier flags... for subfunction
 */
 #include "../include/my_printf.h"
 
 static void print_width_e(int *compt, int *list_flagscompt, long double *nb,
     int char_print)
 {
-    int width = list_flagscompt[13];
+    int width = list_flagscompt[12];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     char_print += *nb < 0 ? 1 : 0;
@@ -71,7 +70,7 @@ int print_science_uppercase(va_list list, int *compt, int *list_flagscompt)
 static void width_adresse(int *compt, char *str, int precision,
     int *list_flagscompt)
 {
-    int width = list_flagscompt[13];
+    int width = list_flagscompt[12];
     int zero = ' ';
 
     if ( width < my_strlen(str) + precision + 2)
@@ -126,8 +125,6 @@ static int check_ptr(int *var, int *list_flagscompt)
         (size_t)*var;
     if ( list_flagscompt[10] == 1)
         (ptrdiff_t)*var;
-    if ( list_flagscompt[10] == 1)
-        (long)*var;
 }
 
 int print_compt(va_list list, int *compt, int *list_flagscompt)
