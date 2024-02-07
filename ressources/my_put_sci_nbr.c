@@ -5,6 +5,14 @@
 ** display the given int in th scientific way
 */
 #include "my_printf.h"
+#include "../include/my_macro_abs.h"
+
+static double arround_the_world(double nb)
+{
+    if (nb < 0)
+        return -0.5;
+    return 0.5;
+}
 
 static int printer(double nb, int nb_mult, int upper, int precision)
 {
@@ -13,7 +21,7 @@ static int printer(double nb, int nb_mult, int upper, int precision)
     if (precision) {
         counter += my_put_float(nb, precision);
     } else {
-        counter += my_printf("%d", (int)nb);
+        counter += my_printf("%d", (int)(nb + arround_the_world(nb)));
     }
     my_putchar((upper) ? 'E' : 'e');
     if (nb_mult >= 0) {
