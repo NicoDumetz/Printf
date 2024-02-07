@@ -9,7 +9,7 @@
 
 int print_float(va_list list, int *compt)
 {
-    float nb;
+    double nb;
 
     nb = va_arg(list, double);
     *compt += my_put_float(nb, 6);
