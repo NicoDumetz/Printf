@@ -4,7 +4,7 @@
 ** File description:
 ** lzjegloizelgein nzmo gzpmogz
 */
-#include "include/my_printf.h"
+#include "../../include/my_printf.h"
 
 static char *my_revstr_convert(char *str)
 {

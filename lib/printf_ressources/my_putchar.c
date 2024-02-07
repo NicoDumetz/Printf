@@ -4,7 +4,7 @@
 ** File description:
 ** mojosglknldndl
 */
-#include "include/my_printf.h"
+#include "../../include/my_printf.h"
 
 void my_putchar(char c)
 {
