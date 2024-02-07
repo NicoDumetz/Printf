@@ -1,3 +1,4 @@
+
 /*
 ** EPITECH PROJECT, 2023
 ** flags3
@@ -14,7 +15,7 @@ int print_science_lowercase(va_list list, int *compt, int *list_flagscompt)
     if (list_flagscompt[4] > 0 && nb > 0) {
         my_putchar('+');
         *compt += 1;
-    } else if ( list_flagscompt[3] > 0) {
+    } else if ( list_flagscompt[3] > 0 && nb > 0) {
         my_putchar(' ');
         *compt += 1;
     }
@@ -32,7 +33,7 @@ int print_science_uppercase(va_list list, int *compt, int *list_flagscompt)
     if (list_flagscompt[4] > 0 && nb > 0) {
         my_putchar('+');
         *compt += 1;
-    } else if ( list_flagscompt[3] > 0) {
+    } else if ( list_flagscompt[3] > 0 && nb > 0) {
         my_putchar(' ');
         *compt += 1;
     }

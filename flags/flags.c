@@ -13,10 +13,11 @@ int print_float(va_list list, int *compt, int *list_flagscompt)
     int precision = 6;
 
     nb = va_arg(list, double);
+    
     if (list_flagscompt[4] > 0 && nb > 0) {
         my_putchar('+');
         *compt += 1;
-    } else if ( list_flagscompt[3] > 0) {
+    } else if ( list_flagscompt[3] > 0 && nb > 0) {
         my_putchar(' ');
         *compt += 1;
     }
