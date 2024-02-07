@@ -6,19 +6,37 @@
 */
 #include "../include/my_printf.h"
 
-int print_science_lowercase(va_list list, int *compt)
+int print_science_lowercase(va_list list, int *compt, int *list_flagscompt)
 {
-    *compt += my_put_sci_nbr(va_arg(list, double), 0);
+    double nb = va_arg(list, double);
+
+    if (list_flagscompt[4] > 0 && nb > 0) {
+        my_putchar('+');
+        *compt += 1;
+    } else if ( list_flagscompt[3] > 0) {
+        my_putchar(' ');
+        *compt += 1;
+    }
+    *compt += my_put_sci_nbr(nb, 0, 6);
     return 1;
 }
 
-int print_science_uppercase(va_list list, int *compt)
+int print_science_uppercase(va_list list, int *compt, int *list_flagscompt)
 {
-    *compt += my_put_sci_nbr(va_arg(list, double), 1);
+    double nb = va_arg(list, double);
+
+    if (list_flagscompt[4] > 0 && nb > 0) {
+        my_putchar('+');
+        *compt += 1;
+    } else if ( list_flagscompt[3] > 0) {
+        my_putchar(' ');
+        *compt += 1;
+    }
+    *compt += my_put_sci_nbr(nb, 1, 6);
     return 1;
 }
 
-int print_adresse(va_list list, int *compt)
+int print_adresse(va_list list, int *compt, int *list_flagscompt)
 {
     unsigned long long nb;
 
@@ -29,7 +47,7 @@ int print_adresse(va_list list, int *compt)
     return 1;
 }
 
-int print_compt(va_list list, int *compt)
+int print_compt(va_list list, int *compt, int *list_flagscompt)
 {
     int *var;
 
@@ -38,10 +56,9 @@ int print_compt(va_list list, int *compt)
     return 1;
 }
 
-int print_g(va_list list, int *compt)
+int print_g(va_list list, int *compt, int *list_flagscompt)
 {
     point_g(va_arg(list, double));
     *compt += 1;
     return 1;
-
 }
