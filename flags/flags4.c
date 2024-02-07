@@ -76,10 +76,8 @@ static void print_width_b(int *compt, int *list_flagscompt, char *str)
         my_putchar(zero);
         *compt += 1;
     }
-    if (list_flagscompt[0] > 0) {
-        my_putstr("0b");
+    if (list_flagscompt[0] > 0)
         *compt += 2;
-    }
 }
 
 int print_bin(va_list list, int *compt, int *list_flagscompt)
@@ -90,13 +88,13 @@ int print_bin(va_list list, int *compt, int *list_flagscompt)
 
     nb = check_int_u(list, list_flagscompt);
     nb = list_flagscompt[6] == 2 ? (unsigned char)nb : nb;
-    if ( list_flagscompt[5] >= 0) {
-        precision = list_flagscompt[5];
-        str = my_put_convert_base_prec(nb, "01", precision);
-    } else
-        str = my_put_convert_base(nb, "01");
+    precision = list_flagscompt[5];
+    str = list_flagscompt[5] >= 0 ? my_put_convert_base_prec(nb, "01"
+    , precision) : my_put_convert_base(nb, "01");
     if ( list_flagscompt[2] == 0)
         print_width_b(compt, list_flagscompt, str);
+    if (list_flagscompt[0] > 0)
+        my_putstr("0b");
     my_putstr(str);
     if ( list_flagscompt[2] > 0)
         print_width_b(compt, list_flagscompt, str);
