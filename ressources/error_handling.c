@@ -25,12 +25,27 @@ static int error_loop_loop(const char *format, int *i)
     for (int j = 0; fonc_list[j].c; j++)
         if (fonc_list[j].c == format[*i])
             return 1;
-    if (format[*i] == '\0')
+    if (format[*i] == '\0' || format[*i] == 'S')
         return -1;
     return 0;
 }
 
-static int error_loop(const char *format, int *i)
+static int fatal_error_loop(const char *format, int *i)
+{
+    char spe_crash[6] = {'l', 'j', 'z', 't', 'L', 0};
+
+    for (int j = 0; list_modi[j]; j++) {
+        if (format[*i] == list_modi[j])
+            *i += modi_test(format, *i, list_modi[j]);
+    }
+    for (int j = 0; spe_crash[j]; j++) {
+        if (format[*i - 1] == spe_crash[j] && format[*i] == 's')
+            return 1;
+    }
+    return 0;
+}
+
+static int error_loop(const char *format, int *i, int fatal)
 {
     for (int j = 0; list_flags[j]; j++) {
         if (format[*i] == list_flags[j]) {
@@ -48,7 +63,25 @@ static int error_loop(const char *format, int *i)
         while (format[*i] >= '0' && format[*i] <= '9')
             ++*i;
     }
+    if (fatal)
+        return 0;
     return error_loop_loop(format, i);
+}
+
+int fatal_error_handling(const char *format)
+{
+    int result = 0;
+
+    for (int i = 0; format[i] != '\0'; i++) {
+        if (format[i] == '%') {
+            ++i;
+            error_loop(format, &i, 1);
+            result = fatal_error_loop(format, &i);
+        }
+        if (result)
+            return result;
+    }
+    return result;
 }
 
 int error_handling(const char *format)
@@ -60,7 +93,7 @@ int error_handling(const char *format)
         if (format[i] == '%') {
             ++i;
             prev = actual;
-            actual = error_loop(format, &i);
+            actual = error_loop(format, &i, 0);
         }
         if (prev == 1 && actual == -1)
             return 1;
