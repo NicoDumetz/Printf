@@ -26,12 +26,15 @@ int print_char(va_list list, int *compt);
 int print_str(va_list list, int *compt);
 int print_mod(va_list list, int *compt);
 int my_printf(const char *format, ...);
+int my_put_float(double nb, int precision);
+int print_float(va_list list, int *compt);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
     {'s', &print_str},
     {'c', &print_char},
     {'%', &print_mod},
+    {'f', &print_float},
     {0, NULL}
 };
 
