@@ -24,7 +24,23 @@ static char *my_revstr_convert(char *str)
 int my_put_convert_base(unsigned int nb, char *base)
 {
     int len = my_strlen(base);
-    char res[300000];
+    char res[30000];
+    int index;
+
+    for (index = 0; nb > 0; index++) {
+        res[index] = base[nb % len];
+        nb /= len;
+    }
+    res[index] = '\0';
+    my_revstr_convert(res);
+    my_putstr(res);
+    return my_strlen(res);
+}
+
+int my_put_convert_base_ptr(unsigned long long nb, char *base)
+{
+    int len = my_strlen(base);
+    char res[30000];
     int index;
 
     for (index = 0; nb > 0; index++) {

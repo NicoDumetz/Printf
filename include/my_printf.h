@@ -11,6 +11,9 @@
     #include <stdio.h>
     #include <stdarg.h>
     #include <stdlib.h>
+    #include <fcntl.h>
+    #include <errno.h>
+    #include <stdint.h>
 typedef int(*fonc)();
 typedef struct disp {
     char c;
@@ -35,6 +38,9 @@ int print_hex(va_list list, int *compt);
 int print_hex_maj(va_list list, int *compt);
 int print_science(va_list list, int *compt);
 int my_put_sci_nbr(float nb);
+int print_hex(va_list list, int *compt);
+int print_adresse(va_list list, int *compt);
+int my_put_convert_base_ptr(unsigned long long nb, char *base);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
@@ -47,6 +53,7 @@ static const disp_t fonc_list[] = {
     {'x', &print_hex},
     {'X', &print_hex_maj},
     {'e', &print_science},
+    {'p', &print_adresse},
     {0, NULL}
 };
 
