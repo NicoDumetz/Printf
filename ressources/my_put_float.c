@@ -1,8 +1,9 @@
 /*
 ** EPITECH PROJECT, 2023
-** pojgzejpgz
+** my_put_float
 ** File description:
-** zeogihzgohi
+** put a float with the given precision and return the
+** number of character written
 */
 #include "my_printf.h"
 #include "../include/my_macro_abs.h"

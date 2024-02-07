@@ -1,8 +1,11 @@
 /*
 ** EPITECH PROJECT, 2023
-** oizhoihzge
+** point_g
 ** File description:
-** zgoihzegoih
+** un abile jeu de mot avec le point g
+** this function display an int into float or in float if float
+** take less space, while deleting useless 0, this function
+** return the number of characters displayed.
 */
 #include "my_printf.h"
 #include "../include/my_macro_abs.h"

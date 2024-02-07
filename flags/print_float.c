@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** pgihegpi p
+** print_float
 ** File description:
-** egmigzpi"z pgp"o
+** like flags file but specificly for f specifier
 */
 #include "../include/my_printf.h"
 

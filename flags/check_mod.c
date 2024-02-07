@@ -1,8 +1,9 @@
 /*
 ** EPITECH PROJECT, 2023
-** pihizgpgzhe
+** check_mod
 ** File description:
-** lfzghzolihgzhoil
+** this file contain function that we gonna use
+** to cast variables on length modifier
 */
 
 #include "../include/my_printf.h"

@@ -1,8 +1,9 @@
 /*
 ** EPITECH PROJECT, 2023
-** ihzgeihpgz
+** flags4
 ** File description:
-** lzfjbzgeli zihmgz ln
+** hold function called in my_printf.c                                                                                                                                                                                                       
+** that put all modifier flags... for subfunction
 */
 #include "../include/my_printf.h"
 

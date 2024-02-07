@@ -1,8 +1,9 @@
 /*
 ** EPITECH PROJECT, 2023
-** mini-printf
+** my_printf
 ** File description:
-** pz gog pio,"pgo po"'g
+** Copy of printf, this file call each subfunction
+** according to the needs
 */
 #include "include/my_printf.h"
 

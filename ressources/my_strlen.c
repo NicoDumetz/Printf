@@ -2,9 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** MY STRLEN
 ** File description:
-** Write a function that counts and returns the number
-** of characters found in the string passed as parameter.
-** It must be prototyped as follows
+** give the length of a str
 */
 #include "my_printf.h"
 

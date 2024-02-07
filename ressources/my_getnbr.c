@@ -2,8 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** MY GETNBR
 ** File description:
-** Write a function that returns a number, sent to
-** the function as a string. It must be prototyped as follows:
+** function that return an int from a string
 */
 #include "my_printf.h"
 

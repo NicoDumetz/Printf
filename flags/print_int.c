@@ -1,8 +1,9 @@
 /*
 ** EPITECH PROJECT, 2023
-** iihgepiojgzpeoj
+** print_int
 ** File description:
-** gizehogze ihzg oi
+** bunch of function called in my_printf to get
+** all modifier and flags for put int
 */
 #include "../include/my_printf.h"
 

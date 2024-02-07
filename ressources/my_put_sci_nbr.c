@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** my_put_sci_nbr
 ** File description:
-** display the given int in th scientific way
+** display the given int into the scientific way
 */
 #include "my_printf.h"
 #include "../include/my_macro_abs.h"

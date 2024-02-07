@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** putchar
 ** File description:
-** mojosglknldndl
+** put a char (emoji chokbar de bz)
 */
 #include "my_printf.h"
 

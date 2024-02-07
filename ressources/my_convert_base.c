@@ -1,8 +1,9 @@
 /*
 ** EPITECH PROJECT, 2023
-** lzieghlegn
+** my_convert_base
 ** File description:
-** lzjegloizelgein nzmo gzpmogz
+** convert a number given in a given base into
+** another given base
 */
 #include "my_printf.h"
 

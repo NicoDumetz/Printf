@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** lihzrhilgz
+** my_strcat
 ** File description:
-** suvghosgh
+** concatenate the second string into the first one
 */
 #include "my_printf.h"
 

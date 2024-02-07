@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** zgpojpgjzz
+** print_a
 ** File description:
-** ozihfozfh ozhlfhzolilholghkeruhgzerzuhgq oih
+** convert given mentisa into exp 2
 */
 
 #include "my_printf.h"

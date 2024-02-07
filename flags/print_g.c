@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** printg
 ** File description:
-** printg %g and %G
+** printg %g and %G modifier flags and more
 */
 
 #include "../include/my_printf.h"

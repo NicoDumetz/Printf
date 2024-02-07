@@ -2,9 +2,8 @@
 ** EPITECH PROJECT, 2023
 ** MY_PUT_NBR
 ** File description:
-** Write a function that displays the number given as
-** a parameter. It must be able to display all the possible
-** values of an int, and must be prototyped as follows
+** display a number and return the number of
+** characters displayed
 */
 
 #include "my_printf.h"

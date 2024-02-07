@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** oinoniz
+** my_printf.h
 ** File description:
-** gpipng"ip
+** header to include usefull data or prototypes functions
 */
 
 #ifndef MY_PRINTF

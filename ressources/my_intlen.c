@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** oinevrzoinge
+** my_intlen
 ** File description:
-** epkne oin be
+** give the length of an int
 */
 #include "my_printf.h"
 
