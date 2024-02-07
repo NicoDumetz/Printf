@@ -24,13 +24,13 @@ int my_put_float(double nb, int precision)
     for (int k = 0; k < precision; k++) {
         marge /= 10;
     }
-    nb -= my_put_nbr(nb);
+    nb += my_put_nbr(nb);
     my_putchar('.');
     compt++;
     nb += marge;
     for (int index = 0; index < precision; index++) {
         nb *= 10;
-        nb -= my_put_nbr(nb);
+        nb += my_put_nbr(nb);
         compt++;
     }
     return compt;

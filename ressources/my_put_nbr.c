@@ -33,5 +33,5 @@ int my_put_nbr(int nb)
         my_put_nbr(new_nb / 10);
         my_putchar(new_nb % 10 + 48);
     }
-    return nb;
+    return -nb;
 }
