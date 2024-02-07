@@ -6,7 +6,7 @@
 */
 #include "../../include/my_printf.h"
 
-static void printer(float nb, int nb_mult)
+static int printer(float nb, int nb_mult)
 {
     int counter = 1;
 
@@ -20,10 +20,9 @@ static void printer(float nb, int nb_mult)
     return counter;
 }
 
-void my_put_sci_nbr(float nb)
+int my_put_sci_nbr(float nb)
 {
     int neg;
-    int neg_puiss;
     float mult;
     int nb_mult = 0;
 
@@ -36,5 +35,6 @@ void my_put_sci_nbr(float nb)
         nb = nb * mult;
         nb_mult += (mult > 1) ? -1 : 1;
     }
+    nb = (neg) ? -nb : nb;
     return printer(nb, nb_mult);
 }
