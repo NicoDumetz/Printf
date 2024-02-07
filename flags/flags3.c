@@ -2,7 +2,8 @@
 ** EPITECH PROJECT, 2023
 ** flags3
 ** File description:
-** hold function called in my_printf.c                                                                                                                                                                                                       ** that put all modifier flags... for subfunction
+** hold function called in my_printf.c
+** that put all modifier flags... for subfunction
 */
 #include "../include/my_printf.h"
 
