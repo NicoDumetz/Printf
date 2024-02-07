@@ -88,6 +88,9 @@ int get_expos(long double nb)
     double mult;
     int exp = 0;
 
+    if (nb == 0.0) {
+        return exp;
+    }
     mult = (nb >= 1.0) ? 0.1 : 10.0;
     while (!(nb >= 1 && nb < 10)) {
         nb *= mult;
@@ -103,7 +106,7 @@ int point_g(long double nb, int precision, int upper)
 
     precision = (precision <= 0) ? 1 : precision;
     exp = get_expos(ABS(nb));
-    if (ABS(nb) < 0.0001 || exp >= precision) {
+    if (exp < -4 || exp >= precision) {
         return my_put_sci_nbr(nb, upper, science_precision(nb, precision));
     } else {
         return float_type(nb, precision - exp - 1, &marge);

@@ -94,7 +94,7 @@ static void print_width(int *compt, int *list_flagscompt, long double nb,
     int exp;
 
     exp = get_expos(ABS(nb));
-    if (ABS(nb) < 0.0001 || exp >= precision) {
+    if (exp < -4 || exp >= precision) {
         e_print(compt, list_flagscompt, &nb, precision);
         return;
     } else {
