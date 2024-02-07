@@ -45,11 +45,12 @@ int print_science_lowercase(va_list list, int *compt, int *list_flagscompt);
 int print_science_uppercase(va_list list, int *compt, int *list_flagscompt);
 int print_compt(va_list list, int *compt, int *list_flagscompt);
 int print_g(va_list list, int *compt, int *list_flagscompt);
-int point_g(double nb, int precision);
+int point_g(double nb, int precision, int upper);
 int my_getnbr(char const *str);
 int my_putstr_prec(char const *str, int precision);
 int my_putnbr_prec(int nb, int precision);
 int my_put_convert_base_prec(unsigned int nb, char *base, int precision);
+int print_g_maj(va_list list, int *compt, int *list_flagscompt);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
@@ -66,6 +67,7 @@ static const disp_t fonc_list[] = {
     {'p', &print_adresse},
     {'n', &print_compt},
     {'g', &print_g},
+    {'G', &print_g_maj},
     {0, NULL}
 };
 

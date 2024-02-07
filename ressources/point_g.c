@@ -99,7 +99,7 @@ static int get_expos(double nb)
     return exp;
 }
 
-int point_g(double nb, int precision)
+int point_g(double nb, int precision, int upper)
 {
     double marge = 0.5;
     int exp;
@@ -107,7 +107,7 @@ int point_g(double nb, int precision)
     precision = (precision <= 0) ? 1 : precision;
     exp = get_expos(ABS(nb));
     if (ABS(nb) < 0.0001 || exp >= precision) {
-        return my_put_sci_nbr(nb, 0, science_precision(nb, precision));
+        return my_put_sci_nbr(nb, upper, science_precision(nb, precision));
     } else {
         return float_type(nb, precision - exp - 1, &marge);
     }
