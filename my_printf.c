@@ -6,15 +6,6 @@
 */
 #include "include/my_printf.h"
 
-static void print_suite(const char *format, va_list list, int *compt,
-    int *list_flagscompt)
-{
-    for ( int j = 0; fonc_list[j].c; j++) {
-        if (format[0] == fonc_list[j].c)
-            fonc_list[j].f(list, compt, list_flagscompt);
-    }
-}
-
 void print(const char *format, va_list list, int *compt, int *i)
 {
     int list_flagscompt[] = { 0, 0, 0, 0, 0, -1, 0};
@@ -31,10 +22,11 @@ void print(const char *format, va_list list, int *compt, int *i)
         list_flagscompt[5] = my_getnbr(format + *i);
         if (list_flagscompt[5] != 0)
             *i += my_intlen(list_flagscompt[5]);
-        else
-            *i += 1;
     }
-    print_suite((format + *i), list, compt, list_flagscompt);
+    for ( int j = 0; fonc_list[j].c; j++) {
+        if (format[*i] == fonc_list[j].c)
+            fonc_list[j].f(list, compt, list_flagscompt);
+    }
 }
 
 int my_printf(const char *format, ...)
