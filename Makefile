@@ -32,10 +32,14 @@ SRC =	$(RESSOURCES_PATH)/my_convert_base.c \
 	$(FLAGS_PATH)/print_g.c \
 	my_printf.c
 
+TEST_SRC =	tests/test_my_printf.c \
+		tests/test_my_printf_d.c
+
 OBJ = $(SRC:.c=.o)
 
-NAME = libmy.a
+TEST_OBJ = $(TEST_SRC:.c=.o)
 
+NAME = libmy.a
 
 all: $(NAME)
 
@@ -49,11 +53,19 @@ test: $(NAME)
 $(NAME): header $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
+unit_tests: fclean $(NAME) $(TEST_OBJ)
+	gcc -o unit_tests $(TEST_OBJ) -lcriterion -L./ -lmy
+
+tests_run: unit_tests
+	./unit_tests
+
 clean:
 	rm -f $(OBJ)
+	rm -f $(TEST_OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f include/my_printf.h
+	rm -f unit_tests
 
 re: fclean all
