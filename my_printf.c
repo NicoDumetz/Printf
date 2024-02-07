@@ -6,7 +6,7 @@
 */
 #include "include/my_printf.h"
 
-int print(const char *format, va_list list, int *compt)
+void print(const char *format, va_list list, int *compt)
 {
     for ( int j = 0; fonc_list[j].c; j++) {
         if (format[0] == fonc_list[j].c)
