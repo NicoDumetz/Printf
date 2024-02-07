@@ -5,8 +5,8 @@
 ** gpipng"ip
 */
 
-#ifndef MINI_PRINTF
-    #define MINI_PRINTF
+#ifndef MY_PRINTF
+    #define MY_PRINTF
     #include <unistd.h>
     #include <stdio.h>
     #include <stdarg.h>
@@ -25,7 +25,7 @@ int print_int(va_list list, int *compt);
 int print_char(va_list list, int *compt);
 int print_str(va_list list, int *compt);
 int print_mod(va_list list, int *compt);
-int mini_printf(const char *format, ...);
+int my_printf(const char *format, ...);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},

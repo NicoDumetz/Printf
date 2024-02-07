@@ -6,7 +6,7 @@
 ** of characters found in the string passed as parameter.
 ** It must be prototyped as follows
 */
-#include "include/mini_printf.h"
+#include "include/my_printf.h"
 
 int my_strlen(char const *str)
 {

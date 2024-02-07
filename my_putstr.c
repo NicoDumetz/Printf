@@ -8,7 +8,7 @@
 ** in the pointer passed as a parameter to the function,
 ** which must be prototyped as follows:
 */
-#include "include/mini_printf.h"
+#include "include/my_printf.h"
 
 int my_putstr(char const *str)
 {
