@@ -1,0 +1,93 @@
+README: my_printf Functionality
+
+The my_printf function is a custom implementation of the printf function in C according to the C99 standard. It provides a flexible way to format and print output to the standard output stream. This README provides an overview of the my_printf function and its usage.
+Overview
+
+    Objective:
+    Recode the printf function from the C library according to the C99 standard, supporting various format specifiers, flags, and modifiers.
+
+    Binary Name:
+    libmy.a
+
+    Language:
+    C
+
+    Compilation:
+    Via Makefile, including re, clean, and fclean rules
+
+    Error Handling:
+    Error messages are written to the error output, and the program exits with the 84 error code in case of errors.
+
+    Library Contents:
+    The libmy.a library contains the my_printf function, along with any other necessary functions.
+
+    Forbidden Functions:
+    The entire libC is forbidden except for va_start, va_end, va_arg, malloc, free, and write.
+
+Usage
+
+To use the my_printf function, include the my.h header file in your C code:
+
+c
+
+#include "my.h"
+
+Then, call the my_printf function with the desired format string and arguments:
+
+c
+
+int main(void) {
+    my_printf("Hello, %s!\n", "world");
+    return 0;
+}
+
+Format Specifiers
+
+my_printf supports the following format specifiers:
+
+    %s: String
+    %d, %i: Signed integer
+    %u: Unsigned integer
+    %x, %X: Hexadecimal
+    %o: Octal
+    %c: Character
+    %%: Percent sign
+
+Bonus Feature
+
+A bonus feature is included to generate a random number between 0 and 100 using the %r format specifier:
+
+c
+
+int main(void) {
+    my_printf("Random number: %r\n");
+    return 0;
+}
+
+Directory Structure
+
+css
+
+project_folder/
+│
+├── src/
+│   ├── my_printf.c
+│   ├── additional_function1.c
+│   ├── additional_function2.c
+│   └── ...
+│
+├── include/
+│   └── my.h
+│
+├── tests/
+│   ├── test_my_printf.c
+│   └── ...
+│
+└── Makefile
+
+Contributing
+
+Contributions to the project are welcome! Feel free to open an issue or submit a pull request on the project's repository.
+Authors
+
+[Your Name]
