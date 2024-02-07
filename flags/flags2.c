@@ -10,6 +10,7 @@ static void print_width(int *compt, int *list_flagscompt, char *str)
 {
     int width = list_flagscompt[12];
     int char_print = 0;
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if (list_flagscompt[0] > 0) {
         char_print += 2;
@@ -17,7 +18,7 @@ static void print_width(int *compt, int *list_flagscompt, char *str)
     if ( width < my_strlen(str) + char_print)
         return;
     for (int i = 0; i < width - (my_strlen(str) + char_print); i++) {
-        my_putchar(' ');
+        my_putchar(zero);
         *compt += 1;
     }
     if (list_flagscompt[0] > 0) {
@@ -30,6 +31,7 @@ static void print_width_o(int *compt, int *list_flagscompt, char *str)
 {
     int width = list_flagscompt[12];
     int char_print = 0;
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if (list_flagscompt[0] > 0) {
         char_print += 1;
@@ -37,7 +39,7 @@ static void print_width_o(int *compt, int *list_flagscompt, char *str)
     if ( width < my_strlen(str) + char_print)
         return;
     for (int i = 0; i < width - (my_strlen(str) + char_print); i++) {
-        my_putchar(' ');
+        my_putchar(zero);
         *compt += 1;
     }
 }
@@ -45,11 +47,12 @@ static void print_width_o(int *compt, int *list_flagscompt, char *str)
 static void print_width_d(int *compt, int *list_flagscompt, char *str)
 {
     int width = list_flagscompt[12];
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if ( width < my_strlen(str))
         return;
     for (int i = 0; i < width - my_strlen(str); i++) {
-        my_putchar(' ');
+        my_putchar(zero);
         *compt += 1;
     }
     if (list_flagscompt[0] > 0) {
@@ -72,8 +75,11 @@ int print_oct(va_list list, int *compt, int *list_flagscompt)
         str = my_put_convert_base_prec(nb, "01234567", precision);
     } else
         str = my_put_convert_base(nb, "01234567");
-    print_width_o(compt, list_flagscompt, str);
+    if ( list_flagscompt[2] == 0)
+        print_width_o(compt, list_flagscompt, str);
     my_putstr(str);
+    if ( list_flagscompt[2] > 0)
+        print_width_o(compt, list_flagscompt, str);
     *compt += my_strlen(str);
     free(str);
     return 1;
@@ -93,8 +99,11 @@ int print_dec(va_list list, int *compt, int *list_flagscompt)
         str = my_put_convert_base_prec(nb, "0123456789", precision);
     } else
         str = my_put_convert_base(nb, "0123456789");
-    print_width_d(compt, list_flagscompt, str);
+    if ( list_flagscompt[2] == 0)
+        print_width_d(compt, list_flagscompt, str);
     my_putstr(str);
+    if ( list_flagscompt[2] > 0)
+        print_width_d(compt, list_flagscompt, str);
     *compt += my_strlen(str);
     free(str);
     return 1;
@@ -114,8 +123,11 @@ int print_hex(va_list list, int *compt, int *list_flagscompt)
         str = my_put_convert_base_prec(nb, "0123456789abcdef", precision);
     } else
         str = my_put_convert_base(nb, "0123456789abcdef");
-    print_width(compt, list_flagscompt, str);
+    if ( list_flagscompt[2] == 0)
+        print_width(compt, list_flagscompt, str);
     my_putstr(str);
+    if ( list_flagscompt[2] > 0)
+        print_width(compt, list_flagscompt, str);
     *compt += my_strlen(str);
     free(str);
     return 1;
@@ -135,8 +147,11 @@ int print_hex_maj(va_list list, int *compt, int *list_flagscompt)
         str = my_put_convert_base_prec(nb, "0123456789ABCDEF", precision);
     } else
         str = my_put_convert_base(nb, "0123456789ABCDEF");
-    print_width(compt, list_flagscompt, str);
+    if ( list_flagscompt[2] == 0)
+        print_width(compt, list_flagscompt, str);
     my_putstr(str);
+    if ( list_flagscompt[2] > 0)
+        print_width(compt, list_flagscompt, str);
     *compt += my_strlen(str);
     free(str);
     return 1;

@@ -10,6 +10,7 @@ static void print_width_e(int *compt, int *list_flagscompt, long double nb,
     int char_print)
 {
     int width = list_flagscompt[12];
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if (list_flagscompt[4] > 0 && nb > 0) {
         char_print++;
@@ -18,7 +19,7 @@ static void print_width_e(int *compt, int *list_flagscompt, long double nb,
     if ( width < my_intlen(nb) + char_print + 1)
         return;
     for (int i = 0; i < width - (my_intlen(nb) + char_print + 4); i++) {
-        my_putchar(' ');
+        my_putchar(zero);
         *compt += 1;
     }
 }
@@ -33,9 +34,12 @@ int print_science_lowercase(va_list list, int *compt, int *list_flagscompt)
     if ( list_flagscompt[5] > 0)
         precision = list_flagscompt[5];
     char_print = precision;
-    print_width_e(compt, list_flagscompt, nb, char_print);
+    if ( list_flagscompt[2] == 0)
+        print_width_e(compt, list_flagscompt, nb, char_print);
     check_flags_float(nb, compt, list_flagscompt);
     *compt += my_put_sci_nbr(nb, 0, precision);
+    if ( list_flagscompt[2] > 0)
+        print_width_e(compt, list_flagscompt, nb, char_print);
     return 1;
 }
 
@@ -49,9 +53,12 @@ int print_science_uppercase(va_list list, int *compt, int *list_flagscompt)
     if ( list_flagscompt[5] > 0)
         precision = list_flagscompt[5];
     char_print = precision;
-    print_width_e(compt, list_flagscompt, nb, char_print);
+    if ( list_flagscompt[2] == 0)
+        print_width_e(compt, list_flagscompt, nb, char_print);
     check_flags_float(nb, compt, list_flagscompt);
     *compt += my_put_sci_nbr(nb, 1, precision);
+    if ( list_flagscompt[2] > 0)
+        print_width_e(compt, list_flagscompt, nb, char_print);
     return 1;
 }
 
@@ -59,12 +66,23 @@ static void width_adresse(int *compt, char *str, int precision,
     int *list_flagscompt)
 {
     int width = list_flagscompt[12];
+    int zero = ' ';
 
     if ( width < my_strlen(str) + precision + 2)
         return;
     for (int i = 0; i < width - (precision + 2); i++) {
-        my_putchar(' ');
+        my_putchar(zero);
         *compt += 1;
+    }
+}
+
+static int width_adr(int precision, char *str, int *compt)
+{
+    if ( precision > my_strlen(str)) {
+        for (int i = 0; i < precision - my_strlen(str); i++ ) {
+            my_putchar('0');
+            *compt += 1;
+        }
     }
 }
 
@@ -79,13 +97,11 @@ int print_adresse(va_list list, int *compt, int *list_flagscompt)
     width_adresse(compt, str, precision, list_flagscompt);
     my_putstr("0x");
     *compt += 2;
-    if ( precision > my_strlen(str)) {
-        for (int i = 0; i < precision - my_strlen(str); i++ ) {
-            my_putchar('0');
-            *compt += 1;
-        }
-    }
+    if ( list_flagscompt[2] == 0)
+        width_adr(precision, str, compt);
     my_putstr(str);
+    if ( list_flagscompt[2] > 0)
+        width_adr(precision, str, compt);
     *compt += my_strlen(str);
     return 1;
 }

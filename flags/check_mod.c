@@ -1,9 +1,10 @@
 /*
 ** EPITECH PROJECT, 2023
-** pgehigeh pongegpjeo
+** pihizgpgzhe
 ** File description:
-** egpih eizhgpj pgjz pgj oz
+** lfzghzolihgzhoil
 */
+
 #include "../include/my_printf.h"
 
 long check_int(va_list list, int *list_flagscompt)

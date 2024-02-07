@@ -48,7 +48,6 @@ static int float_type(long double nb, long double precision, double *marge)
         *marge /= 10;
         nb *= 10;
         str[k + 1] = ((int)nb % 10) + '0';
-        nb = nb - (((int)nb / 10) * 10);
     }
     for (int k = precision; k >= 0 && str[k] == '0'; k--)
         str[k] = '\0';

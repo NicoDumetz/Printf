@@ -22,6 +22,7 @@ static void print_width_int(long nb, int char_print, int *compt
     , int *list_flagscompt)
 {
     int width = list_flagscompt[12];
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     char_print = nb < 0 ? char_print + 1 : char_print;
     if (list_flagscompt[4] > 0 && nb > 0) {
@@ -31,9 +32,21 @@ static void print_width_int(long nb, int char_print, int *compt
     if ( width < my_intlen(nb) + char_print)
         return;
     for (int i = 0; i < width - (my_intlen(nb) + char_print); i++) {
-        my_putchar(' ');
+        my_putchar(zero);
         *compt += 1;
     }
+}
+
+static int if_no_prec(long nb, int *compt, int *list_flagscompt)
+{
+    if ( list_flagscompt[2] == 0)
+        print_width_int(nb, 0, compt, list_flagscompt);
+    check_flags_int(nb, compt, list_flagscompt);
+    my_put_nbr(nb);
+    *compt += my_intlen(nb);
+    if ( list_flagscompt[2] > 0)
+        print_width_int(nb, 0, compt, list_flagscompt);
+    return 1;
 }
 
 int print_int(va_list list, int *compt, int *list_flagscompt)
@@ -46,15 +59,16 @@ int print_int(va_list list, int *compt, int *list_flagscompt)
         nb = (char)nb;
     if ( list_flagscompt[5] > my_intlen(nb)) {
         precision = list_flagscompt[5];
-        print_width_int(nb, precision - my_intlen(nb), compt, list_flagscompt);
+        if ( list_flagscompt[2] == 0)
+            print_width_int(nb, precision - my_intlen(nb),
+            compt, list_flagscompt);
         check_flags_int(nb, compt, list_flagscompt);
         my_putnbr_prec(nb, precision);
         *compt = nb < 0 ? *compt + precision + 1 : *compt + precision;
-    } else {
-        print_width_int(nb, 0, compt, list_flagscompt);
-        check_flags_int(nb, compt, list_flagscompt);
-        my_put_nbr(nb);
-        *compt += my_intlen(nb);
-    }
+        if ( list_flagscompt[2] > 0)
+            print_width_int(nb, precision - my_intlen(nb),
+            compt, list_flagscompt);
+    } else
+        if_no_prec(nb, compt, list_flagscompt);
     return 1;
 }
