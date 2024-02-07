@@ -5,103 +5,12 @@
 ** serie of test for my_printf
 */
 
-#include <criterion/criterion.h>
-#include <criterion/redirect.h>
+#include "test.h"
 
 void redirect_all_stdout(void)
 {
-    cr_redirect_stdout();
-    cr_redirect_stderr();
-}
-
-Test(specificateur_i, negative_value, .init = redirect_all_stdout)
-{
-    my_printf("J'ai toujours ma dette de %i bananes", -123456789);
-    cr_assert_stdout_eq_str("J'ai toujours ma dette de -123456789 bananes");
-}
-
-Test(specificateur_i, null_value, .init = redirect_all_stdout)
-{
-    my_printf("J'ai tellement mangé de bananes qu'il m'en reste %i", 0);
-    cr_assert_stdout_eq_str("J'ai tellement mangé de bananes qu'il m'en reste 0");
-}
-
-Test(specificateur_i, positive_value, .init = redirect_all_stdout)
-{
-    my_printf("Mr beast m'a offert %i bananes", 123456789);
-    cr_assert_stdout_eq_str("Mr beast m'a offert 123456789 bananes");
-}
-
-Test(specificateur_s, empty_string, .init = redirect_all_stdout)
-{
-    my_printf("%s", "");
-    cr_assert_stdout_eq_str("");
-}
-
-Test(specificateur_s, normal_string, .init = redirect_all_stdout)
-{
-    my_printf("%s", "J'adore les bananes. Where is Brian? Brian mange des bananes!");
-    cr_assert_stdout_eq_str("J'adore les bananes. Where is Brian? Brian mange des bananes!");
-}
-
-Test(specificateur_c, only_test_existing, .init = redirect_all_stdout)
-{
-    my_printf("%cananes", 'b');
-    cr_assert_stdout_eq_str("bananes");
-}
-
-Test(specificateur_percent, test, .init = redirect_all_stdout)
-{
-    my_printf("Notre ADN est à 50%% le même que celui d'une banane");
-    cr_assert_stdout_eq_str("Notre ADN est à 50% le même que celui d'une banane");
-}
-
-Test(specificateur_f, negative_value, .init = redirect_all_stdout)
-{
-    my_printf("%f", -123456789.0);
-    cr_assert_stdout_eq_str("-123456789.000000");
-}
-
-Test(specificateur_f, negative_value_arround, .init = redirect_all_stdout)
-{
-    my_printf("%f", -123.4567899);
-    cr_assert_stdout_eq_str("-123.456790");
-}
-
-Test(specificateur_f, negative_value_big_arround, .init = redirect_all_stdout)
-{
-    my_printf("%f", -123456789.9999999);
-    cr_assert_stdout_eq_str("-123456790.000000");
-}
-
-Test(specificateur_f, null_value, .init = redirect_all_stdout)
-{
-    my_printf("%f", 0.0);
-    cr_assert_stdout_eq_str("0.000000");
-}
-
-Test(specificateur_f, positive_value, .init = redirect_all_stdout)
-{
-    my_printf("%f", 123456789.0);
-    cr_assert_stdout_eq_str("123456789.000000");
-}
-
-Test(specificateur_f, positive_value_arround, .init = redirect_all_stdout)
-{
-    my_printf("%f", 123.4567899);
-    cr_assert_stdout_eq_str("123.456790");
-}
-
-Test(specificateur_f, positive_value_big_arround, .init = redirect_all_stdout)
-{
-    my_printf("%f", 123456789.9999999);
-    cr_assert_stdout_eq_str("123456790.000000");
-}
-
-Test(specificateur_F, test, .init = redirect_all_stdout)
-{
-    my_printf("%F", 123.0);
-    cr_assert_stdout_eq_str("123.000000");
+        cr_redirect_stdout();
+        cr_redirect_stderr();
 }
 
 Test(specificteur_o, normal_value, .init = redirect_all_stdout)

@@ -33,7 +33,10 @@ SRC =	$(RESSOURCES_PATH)/my_convert_base.c \
 	my_printf.c
 
 TEST_SRC =	tests/test_my_printf.c \
-		tests/test_my_printf_d.c
+		tests/test_my_printf_di.c \
+		tests/test_my_printf_sc.c \
+		tests/test_my_printf_percent.c \
+		tests/test_my_printf_f.c
 
 OBJ = $(SRC:.c=.o)
 

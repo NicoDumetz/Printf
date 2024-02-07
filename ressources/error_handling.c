@@ -32,7 +32,7 @@ static int error_loop_loop(const char *format, int *i)
 
 static int fatal_error_loop(const char *format, int *i)
 {
-    char spe_crash[6] = {'l', 'j', 'z', 't', 'L', 0};
+    char spe_crash[7] = {'l', 'j', 'z', 't', 'L', 'q', 0};
 
     for (int j = 0; list_modi[j]; j++) {
         if (format[*i] == list_modi[j])
