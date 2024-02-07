@@ -5,6 +5,7 @@
 ** zeogihzgohi
 */
 #include "my_printf.h"
+#include "../include/my_macro_abs.h"
 
 static void is_negative(double *nb, int *compt)
 {
@@ -18,7 +19,7 @@ static void is_negative(double *nb, int *compt)
 int my_put_float(double nb, int precision)
 {
     double marge = 0.5;
-    int compt = my_intlen(nb);
+    int compt = my_intlen(ABS(nb));
 
     is_negative(&nb, &compt);
     for (int k = 0; k < precision; k++) {

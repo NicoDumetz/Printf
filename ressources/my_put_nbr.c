@@ -35,3 +35,24 @@ int my_put_nbr(int nb)
     }
     return -nb;
 }
+
+int my_putnbr_prec(int nb, int precision)
+{
+    long new_nb;
+
+    if ( nb == -2147483648) {
+        write(1, "-2147483648", 11);
+        return 0;
+    }
+    nb = is_negative(nb);
+    for (int i = 0; i < precision - my_intlen(nb); i++)
+        my_putchar('0');
+    new_nb = nb;
+    if ( new_nb <= 9 ) {
+        my_putchar(new_nb + 48);
+    } else {
+        my_put_nbr(new_nb / 10);
+        my_putchar(new_nb % 10 + 48);
+    }
+    return -nb;
+}

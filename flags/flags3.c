@@ -9,6 +9,7 @@
 int print_science_lowercase(va_list list, int *compt, int *list_flagscompt)
 {
     double nb = va_arg(list, double);
+    int precision = 6;
 
     if (list_flagscompt[4] > 0 && nb > 0) {
         my_putchar('+');
@@ -17,13 +18,16 @@ int print_science_lowercase(va_list list, int *compt, int *list_flagscompt)
         my_putchar(' ');
         *compt += 1;
     }
-    *compt += my_put_sci_nbr(nb, 0, 6);
+    if ( list_flagscompt[5] > 0)
+        precision = list_flagscompt[5];
+    *compt += my_put_sci_nbr(nb, 0, precision);
     return 1;
 }
 
 int print_science_uppercase(va_list list, int *compt, int *list_flagscompt)
 {
     double nb = va_arg(list, double);
+    int precision = 6;
 
     if (list_flagscompt[4] > 0 && nb > 0) {
         my_putchar('+');
@@ -32,7 +36,9 @@ int print_science_uppercase(va_list list, int *compt, int *list_flagscompt)
         my_putchar(' ');
         *compt += 1;
     }
-    *compt += my_put_sci_nbr(nb, 1, 6);
+    if ( list_flagscompt[5] > 0)
+        precision = list_flagscompt[5];
+    *compt += my_put_sci_nbr(nb, 1, precision);
     return 1;
 }
 

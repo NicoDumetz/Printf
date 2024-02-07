@@ -9,6 +9,7 @@
 int print_int(va_list list, int *compt, int *list_flagscompt)
 {
     int nb;
+    int precision;
 
     nb = va_arg(list, int);
     if (list_flagscompt[4] > 0 && nb > 0) {
@@ -18,8 +19,14 @@ int print_int(va_list list, int *compt, int *list_flagscompt)
         my_putchar(' ');
         *compt += 1;
     }
-    my_put_nbr(nb);
-    *compt += my_intlen(nb);
+    if ( list_flagscompt[5] > my_intlen(nb)) {
+        precision = list_flagscompt[5];
+        my_putnbr_prec(nb, precision);
+        *compt += precision;
+    } else {
+        my_put_nbr(nb);
+        *compt += my_intlen(nb);
+    }
     return 1;
 }
 
