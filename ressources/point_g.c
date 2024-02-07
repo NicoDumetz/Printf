@@ -27,14 +27,14 @@ static int add_len_decimal(char *str, int counter)
 static int float_type(long double nb, long double precision, double *marge)
 {
     char *str;
-    int counter = (nb < 0) ? 1 : 0;
+    int counter = (nb < 0.0) ? 1 : 0;
 
     for (int k = 0; k < precision; k++)
         *marge /= 10;
     nb += (nb >= 0) ? *marge : -(*marge);
-    nb = (nb < 0.0) ? -nb : nb;
-    counter += my_intlen(nb);
+    counter += my_intlen(ABS(nb));
     nb += put_nbr(nb);
+    nb = (nb < 0.0) ? -nb : nb;
     str = malloc(precision + 1);
     str[0] = '.';
     for (int k = 0; k < precision; k++) {
@@ -65,7 +65,7 @@ static int precision_loop(long double nb, int precision)
     return precision - 1;
 }
 
-static int science_precision(long double nb, double precision)
+int science_precision(long double nb, double precision)
 {
     double mult;
     double marge = 0.5;
@@ -80,7 +80,7 @@ static int science_precision(long double nb, double precision)
     return precision_loop(nb, precision);
 }
 
-static int get_expos(long double nb)
+int get_expos(long double nb)
 {
     double mult;
     int exp = 0;

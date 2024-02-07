@@ -64,6 +64,8 @@ int print_a_maj(va_list list, int *compt, int *list_flagscompt);
 int print_bin(va_list list, int *compt, int *list_flagscompt);
 int error_handling(char const *format);
 int print_bin_maj(va_list list, int *compt, int *list_flagscompt);
+int science_precision(long double nb, double precision);
+int get_expos(long double nb);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},

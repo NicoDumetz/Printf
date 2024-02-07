@@ -29,6 +29,7 @@ SRC =	$(RESSOURCES_PATH)/my_convert_base.c \
 	$(FLAGS_PATH)/check_mod.c \
 	$(FLAGS_PATH)/print_float.c \
 	$(FLAGS_PATH)/print_int.c \
+	$(FLAGS_PATH)/print_g.c \
 	my_printf.c
 
 OBJ = $(SRC:.c=.o)

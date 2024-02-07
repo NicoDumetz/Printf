@@ -11,8 +11,8 @@ int my_intlen(long nb)
     int compt = 0;
 
     if ( nb < 0 ) {
-        compt++;
         nb = nb * -1;
+        compt++;
     }
     if (nb == 0)
         return compt + 1;
