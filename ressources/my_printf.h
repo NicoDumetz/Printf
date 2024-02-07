@@ -93,5 +93,5 @@ static const disp_t fonc_list[] = {
 };
 
 static const char list_flags[] = {'#', '0', '-', ' ', '+', 0};
-static const char list_modi[] = {'h', 'l', 'j', 'z', 't', 'L', 0};
+static const char list_modi[] = {'h', 'l', 'j', 'z', 't', 'L', 'q', 0};
 #endif

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** flags4
 ** File description:
-** hold function called in my_printf.c                                                                                                                                                                                                       
+** hold function called in my_printf.c
 ** that put all modifier flags... for subfunction
 */
 #include "../include/my_printf.h"
@@ -10,7 +10,7 @@
 static void print_width_a(int *compt, int *list_flagscompt, long double nb,
     int precision)
 {
-    int width = list_flagscompt[12];
+    int width = list_flagscompt[13];
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
     int width_a = 7;
     int char_print = 0;
@@ -63,7 +63,7 @@ int print_a_maj(va_list list, int *compt, int *list_flagscompt)
 
 static void print_width_b(int *compt, int *list_flagscompt, char *str)
 {
-    int width = list_flagscompt[12];
+    int width = list_flagscompt[13];
     int zero = ' ';
     int char_print = 0;
 
