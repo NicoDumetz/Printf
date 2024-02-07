@@ -27,7 +27,6 @@ OBJ = $(SRC:.c=.o)
 
 NAME = libmy.a
 
-CFLAGS += -Wall -Wextra -Werror
 
 all: $(NAME)
 
