@@ -50,11 +50,11 @@ static int precision_loop(double nb, int precision)
     char *str;
 
     str = malloc(precision);
-       for (int k = 0; k < precision - 1; k++) {
+    for (int k = 0; k < precision - 1; k++) {
         nb *= 10;
         str[k] = ((int)nb % 10) + '0';
     }
-          for (int k = precision - 2; k >= 0; k--) {
+    for (int k = precision - 2; k >= 0; k--) {
         if (str[k] > '0' && str[k] <= '9')
             break;
         precision--;
