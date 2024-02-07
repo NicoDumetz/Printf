@@ -25,11 +25,11 @@ static void print_width_e(int *compt, int *list_flagscompt, long double nb,
 
 int print_science_lowercase(va_list list, int *compt, int *list_flagscompt)
 {
-    long double nb;
+    double nb = va_arg(list, double);
     int precision = 6;
     int char_print;
 
-    nb = check_float(list, list_flagscompt);
+    nb = check_float(nb, list_flagscompt);
     if ( list_flagscompt[5] > 0)
         precision = list_flagscompt[5];
     char_print = precision;
@@ -41,11 +41,11 @@ int print_science_lowercase(va_list list, int *compt, int *list_flagscompt)
 
 int print_science_uppercase(va_list list, int *compt, int *list_flagscompt)
 {
-    long double nb;
+    double nb = va_arg(list, double);
     int precision = 6;
     int char_print;
 
-    nb = check_float(list, list_flagscompt);
+    nb = check_float(nb, list_flagscompt);
     if ( list_flagscompt[5] > 0)
         precision = list_flagscompt[5];
     char_print = precision;

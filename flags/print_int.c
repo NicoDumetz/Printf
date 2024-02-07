@@ -38,12 +38,11 @@ static void print_width_int(long nb, int char_print, int *compt
 
 int print_int(va_list list, int *compt, int *list_flagscompt)
 {
-    long nb;
+    int nb;
     int precision;
 
-    nb = check_int(list, list_flagscompt);
-    if ( list_flagscompt[6] == 2)
-        nb = (char)nb;
+    nb = va_arg(list, int);
+    nb = check_int(nb, list_flagscompt);
     if ( list_flagscompt[5] > my_intlen(nb)) {
         precision = list_flagscompt[5];
         print_width_int(nb, precision - my_intlen(nb), compt, list_flagscompt);

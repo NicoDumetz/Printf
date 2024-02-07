@@ -6,7 +6,7 @@
 */
 #include "../include/my_printf.h"
 
-void check_flags_float(long double nb, int *compt, int *list_flagscompt)
+static void check_flags_float(long double nb, int *compt, int *list_flagscompt)
 {
     if (list_flagscompt[4] > 0 && nb > 0) {
         my_putchar('+');

@@ -6,43 +6,43 @@
 */
 #include "../include/my_printf.h"
 
-long check_int(va_list list, int *list_flagscompt)
+long check_int(int nb, int *list_flagscompt)
 {
     if ( list_flagscompt[6] == 1)
-        return va_arg(list, int);
+        return (short int)nb;
     if ( list_flagscompt[6] == 2)
-        return va_arg(list, int);
+        return (char)nb;
     if ( list_flagscompt[7] == 1 || list_flagscompt[7] == 2)
-        return (long)va_arg(list, long);
+        return (long)nb;
     if ( list_flagscompt[8] == 1)
-        return va_arg(list, intmax_t);
+        return (intmax_t)nb;
     if ( list_flagscompt[9] == 1)
-        return va_arg(list, size_t);
+        return (size_t)nb;
     if ( list_flagscompt[10] == 1)
-        return va_arg(list, ptrdiff_t);
-    return va_arg(list, int);
+        return (ptrdiff_t)nb;
+    return (int)nb;
 }
 
-unsigned long check_int_u(va_list list, int *list_flagscompt)
+unsigned long check_int_u(int nb, int *list_flagscompt)
 {
     if ( list_flagscompt[6] == 1)
-        return va_arg(list, unsigned int);
+        return (unsigned short int)nb;
     if ( list_flagscompt[6] == 2)
-        return va_arg(list, unsigned int);
+        return (unsigned char)nb;
     if ( list_flagscompt[7] == 1 || list_flagscompt[7] == 2)
-        return va_arg(list, unsigned long);
+        return (unsigned long)nb;
     if ( list_flagscompt[8] == 1)
-        return va_arg(list , uintmax_t);
+        return (uintmax_t)nb;
     if ( list_flagscompt[9] == 1)
-        return va_arg(list, size_t);
+        return (size_t)nb;
     if ( list_flagscompt[10] == 1)
-        return va_arg(list, ptrdiff_t);
-    return va_arg(list, unsigned int);
+        return (ptrdiff_t)nb;
+    return (unsigned int)nb;
 }
 
-long double check_float(va_list list, int *list_flagscompt)
+long double check_float(double nb, int *list_flagscompt)
 {
     if ( list_flagscompt[11] == 1)
-        return va_arg(list, long double);
-    return va_arg(list, double);
+        return (long double)nb;
+    return (double)nb;
 }
