@@ -67,7 +67,7 @@ int print_g(va_list list, int *compt, int *list_flagscompt)
     int precision = 6;
     double nb = va_arg(list, double);
 
-    if ( list_flagscompt[5] > 0)
+    if ( list_flagscompt[5] >= 0)
         precision = list_flagscompt[5];
     *compt += point_g(nb, precision);
     return 1;
