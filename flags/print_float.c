@@ -59,6 +59,10 @@ static int if_int(int *compt, int *list_flagscompt, long double nb)
     print_width_int(compt, list_flagscompt, nb, 0);
     check_flags_float(nb, compt, list_flagscompt);
     my_put_nbr((int)nb);
+    if (list_flagscompt[0] > 0 && list_flagscompt[5] == 0) {
+        my_putchar('.');
+        *compt += 1;
+    }
     *compt += my_intlen(nb);
     return 1;
 }

@@ -23,7 +23,7 @@ static void print_width_int(long nb, int char_print, int *compt
     , int *list_flagscompt)
 {
     int width = list_flagscompt[13];
-    int zero = ' ';
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     char_print = nb < 0 ? char_print + 1 : char_print;
     if (list_flagscompt[4] > 0 && nb > 0) {
