@@ -33,7 +33,7 @@ int print_str(va_list list, int *compt)
     return 1;
 }
 
-int print_mod(va_list list, int *compt)
+int print_mod(__attribute__((unused)) va_list list, int *compt)
 {
     my_putchar('%');
     *compt += 1;
