@@ -21,7 +21,7 @@ typedef struct disp {
     fonc f;
 } disp_t;
 void my_putchar(char c);
-int my_put_nbr(long nb);
+long my_put_nbr(long nb);
 int my_putstr(char const *str);
 int my_strlen(char const *str);
 int my_intlen(long nb);
@@ -49,12 +49,12 @@ int print_g(va_list list, int *compt, int *list_flagscompt);
 int point_g(long double nb, int precision, int upper);
 int my_getnbr(char const *str);
 int my_putstr_prec(char const *str, int precision);
-int my_putnbr_prec(long nb, int precision);
+long my_putnbr_prec(long nb, int precision);
 char *my_put_convert_base_prec(unsigned long nb, char *base, int precision);
 int print_g_maj(va_list list, int *compt, int *list_flagscompt);
-long check_int(int nb, int *list_flagscompt);
-unsigned long check_int_u(int nb, int *list_flagscompt);
-long double check_float(double nb, int *flagscompt);
+long check_int(va_list list, int *list_flagscompt);
+unsigned long check_int_u(va_list list, int *list_flagscompt);
+long double check_float(va_list list, int *flagscompt);
 char *my_strcat(char *dest, char const *src);
 void check_flags_float(long double nb, int *compt, int *list_flagscompt);
 static const disp_t fonc_list[] = {
