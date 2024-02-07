@@ -22,7 +22,7 @@ static void print_width_int(long nb, int char_print, int *compt
     , int *list_flagscompt)
 {
     int width = list_flagscompt[12];
-    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
+    int zero = ' ';
 
     char_print = nb < 0 ? char_print + 1 : char_print;
     if (list_flagscompt[4] > 0 && nb > 0) {
@@ -56,7 +56,7 @@ int print_int(va_list list, int *compt, int *list_flagscompt)
 
     nb = check_int(list, list_flagscompt);
     if ( list_flagscompt[6] == 2)
-        nb = (char)nb;
+        nb = (signed char)nb;
     if ( list_flagscompt[5] > my_intlen(nb)) {
         precision = list_flagscompt[5];
         if ( list_flagscompt[2] == 0)

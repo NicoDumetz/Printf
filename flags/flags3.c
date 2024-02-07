@@ -106,11 +106,30 @@ int print_adresse(va_list list, int *compt, int *list_flagscompt)
     return 1;
 }
 
+static int check_ptr(int *var, int *list_flagscompt)
+{
+    if ( list_flagscompt[6] == 1)
+        (short int)*var;
+    if ( list_flagscompt[6] == 2)
+        (int)*var;
+    if ( list_flagscompt[7] == 1 || list_flagscompt[7] == 2)
+        (long)*var;
+    if ( list_flagscompt[8] == 1)
+        (intmax_t)*var;
+    if ( list_flagscompt[9] == 1)
+        (size_t)*var;
+    if ( list_flagscompt[10] == 1)
+        (ptrdiff_t)*var;
+}
+
 int print_compt(va_list list, int *compt, int *list_flagscompt)
 {
     int *var;
 
     var = va_arg(list, int *);
+    check_ptr(var, list_flagscompt);
+    if ( list_flagscompt[6] == 2)
+        *var = (signed char)*var;
     *var = *compt;
     return 1;
 }
