@@ -25,9 +25,22 @@ static int print_suite(const char *format, va_list list, int *compt,
     return i;
 }
 
+static void get_width(const char *format, va_list list, int *i,
+    int *list_flagscompt)
+{
+    if ( format[*i] == '*') {
+        list_flagscompt[12] = va_arg(list, int);
+        *i += 1;
+    } else {
+        list_flagscompt[12] = my_getnbr(format + *i);
+        if ( list_flagscompt[12] != 0)
+            *i += my_intlen(list_flagscompt[12]);
+    }
+}
+
 void print(const char *format, va_list list, int *compt, int *i)
 {
-    int list_flagscompt[] = { 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0};
+    int list_flagscompt[] = { 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0};
 
     for ( int j = 0; list_flags[j]; j++) {
         if (format[*i] == list_flags[j]) {
@@ -36,6 +49,7 @@ void print(const char *format, va_list list, int *compt, int *i)
             j = 0;
         }
     }
+    get_width(format, list, i, list_flagscompt);
     if ( format[*i] == '.') {
         *i += 1;
         list_flagscompt[5] = my_getnbr(format + *i);
