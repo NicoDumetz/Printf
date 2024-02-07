@@ -60,6 +60,7 @@ void check_flags_float(long double nb, int *compt, int *list_flagscompt);
 int point_a(double nb, int precision, char *base);
 int print_a(va_list list, int *compt, int *list_flagscompt);
 int print_a_maj(va_list list, int *compt, int *list_flagscompt);
+int print_bin(va_list list, int *compt, int *list_flagscompt);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
@@ -80,6 +81,7 @@ static const disp_t fonc_list[] = {
     {'F', &print_float},
     {'a', &print_a},
     {'A', &print_a_maj},
+    {'b', &print_bin},
     {0, NULL}
 };
 

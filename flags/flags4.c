@@ -113,3 +113,44 @@ int print_a_maj(va_list list, int *compt, int *list_flagscompt)
         print_width_a(compt, list_flagscompt, nb, precision);
     return 1;
 }
+
+static void print_width_b(int *compt, int *list_flagscompt, char *str)
+{
+    int width = list_flagscompt[12];
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
+
+    if ( width < my_strlen(str))
+        return;
+    for (int i = 0; i < width - my_strlen(str); i++) {
+        my_putchar(zero);
+        *compt += 1;
+    }
+    if (list_flagscompt[0] > 0) {
+        my_putstr("0");
+        *compt += 1;
+    }
+}
+
+int print_bin(va_list list, int *compt, int *list_flagscompt)
+{
+    long nb;
+    int precision;
+    char *str;
+
+    nb = check_int_u(list, list_flagscompt);
+    nb = list_flagscompt[6] == 2 ? (unsigned char)nb : nb;
+    if ( list_flagscompt[5] >= 0) {
+        precision = list_flagscompt[5];
+        str = my_put_convert_base_prec(nb, "01", precision);
+    } else
+        str = my_put_convert_base(nb, "01");
+    if ( list_flagscompt[2] == 0)
+        print_width_b(compt, list_flagscompt, str);
+    my_putstr(str);
+    if ( list_flagscompt[2] > 0)
+        print_width_b(compt, list_flagscompt, str);
+    *compt += my_strlen(str);
+    if ( list_flagscompt[5] >= 0)
+        free(str);
+    return 1;
+}
