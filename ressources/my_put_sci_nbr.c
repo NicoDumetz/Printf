@@ -6,23 +6,16 @@
 */
 #include "my_printf.h"
 
-static int printer(double nb, int nb_mult, int upper, int precision)
+static int printer(double nb, int nb_mult, int upper)
 {
     int counter = 1;
 
-    if (precision) {
-        counter += my_put_float(nb, precision);
-    } else {
-        counter += my_printf("%d", (int)nb);
-    }
+    counter += my_put_float(nb, 6);
     my_putchar((upper) ? 'E' : 'e');
     if (nb_mult >= 0) {
         my_putchar('+');
-    } else {
-        my_putchar('-');
-        nb_mult = -nb_mult;
+        counter++;
     }
-    counter++;
     if (nb_mult <= 9)
         counter += my_put_nbr(0) + 1;
     my_put_nbr(nb_mult);
@@ -30,21 +23,21 @@ static int printer(double nb, int nb_mult, int upper, int precision)
     return counter;
 }
 
-int my_put_sci_nbr(double nb, int upper, int precision)
+int my_put_sci_nbr(double nb, int upper)
 {
     int neg;
     double mult;
     int nb_mult = 0;
 
     if (nb == 0.0)
-        return printer(0, 0, upper, precision);
-    neg = (nb < 0.0) ? 1 : 0;
-    nb = (nb < 0.0) ? -nb : nb;
+        return printer(0, 0, upper);
+    neg = (nb < 0) ? 1 : 0;
+    nb = (nb < 0) ? -nb : nb;
     mult = (nb >= 1) ? 0.1 : 10.0;
     while (!(nb >= 1 && nb < 10)) {
         nb = nb * mult;
         nb_mult += (mult > 1) ? -1 : 1;
     }
     nb = (neg) ? -nb : nb;
-    return printer(nb, nb_mult, upper, precision);
+    return printer(nb, nb_mult, upper);
 }
