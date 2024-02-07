@@ -6,6 +6,7 @@
 ** a parameter. It must be able to display all the possible
 ** values of an int, and must be prototyped as follows
 */
+
 #include "my_printf.h"
 
 static long is_negative(long nb)
@@ -23,7 +24,7 @@ long my_put_nbr(long nb)
         write(1, "-2147483648", 11);
         return 0;
     }
-    nb = is_negative(nb);    
+    nb = is_negative(nb);
     if ( nb <= 9 ) {
         my_putchar(nb + 48);
     } else {
