@@ -8,7 +8,7 @@
 
 static void is_negative(double *nb, int *compt)
 {
-    if ( *nb < 0) {
+    if (*nb < 0) {
         *nb *= -1;
         my_putchar('-');
         *compt += 1;
