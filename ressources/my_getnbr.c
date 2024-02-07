@@ -25,13 +25,22 @@ static int varsign(int sign, char const *str, int i)
     return sign;
 }
 
+static int setup(char const *str)
+{
+    if ( str[0] == '-' || str[0] == '+')
+        return 0;
+    if ( str[0] >= 48 && str[0] <= 57)
+        return 0;
+    return 1;
+}
+
 int my_getnbr(char const *str)
 {
     int i = 0;
     int sign = 1;
     long res = 0;
 
-    if (str[0] < 42 || str[0] > 59 )
+    if ( setup(str) == 1)
         return 0;
     while ( str[i] == '+' || str[i] == '-' ) {
         sign = varsign(sign, str, i);

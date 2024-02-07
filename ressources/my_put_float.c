@@ -7,7 +7,7 @@
 #include "my_printf.h"
 #include "../include/my_macro_abs.h"
 
-static void is_negative(double *nb, int *compt)
+static void is_negative(long double *nb, int *compt)
 {
     if (*nb < 0) {
         *nb *= -1;
@@ -16,7 +16,7 @@ static void is_negative(double *nb, int *compt)
     }
 }
 
-int my_put_float(double nb, int precision)
+int my_put_float(long double nb, int precision)
 {
     double marge = 0.5;
     int compt = my_intlen(ABS(nb));

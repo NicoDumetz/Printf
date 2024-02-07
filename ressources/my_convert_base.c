@@ -21,7 +21,7 @@ static char *my_revstr_convert(char *str)
     return str;
 }
 
-int my_put_convert_base(unsigned int nb, char *base)
+char *my_put_convert_base(unsigned long nb, char *base)
 {
     int len = my_strlen(base);
     char res[30000];
@@ -32,12 +32,10 @@ int my_put_convert_base(unsigned int nb, char *base)
         nb /= len;
     }
     res[index] = '\0';
-    my_revstr_convert(res);
-    my_putstr(res);
-    return my_strlen(res);
+    return my_revstr_convert(res);
 }
 
-int my_put_convert_base_ptr(unsigned long long nb, char *base)
+char *my_put_convert_base_ptr(unsigned long long nb, char *base)
 {
     int len = my_strlen(base);
     char res[30000];
@@ -48,30 +46,28 @@ int my_put_convert_base_ptr(unsigned long long nb, char *base)
         nb /= len;
     }
     res[index] = '\0';
-    my_revstr_convert(res);
-    my_putstr(res);
-    return my_strlen(res);
+    return my_revstr_convert(res);
 }
 
-int my_put_convert_base_prec(unsigned int nb, char *base, int precision)
+char *my_put_convert_base_prec(unsigned long nb, char *base, int precision)
 {
     int len = my_strlen(base);
-    char res[30000];
+    char res[1000];
+    char *prec;
     int index;
-    int compt = 0;
+    int i;
 
     for (index = 0; nb > 0; index++) {
         res[index] = base[nb % len];
         nb /= len;
     }
     res[index] = '\0';
-    my_revstr_convert(res);
+    prec = malloc(sizeof(char) * (precision + my_strlen(res)));
     if ( precision > my_strlen(res)) {
-        for (int i = 0 ; i < precision - my_strlen(res); i++) {
-            my_putchar('0');
-            compt++;
-        }
+        for (i = 0 ; i < precision - my_strlen(res); i++)
+            prec[i] = '0';
+        prec[i] = '\0';
     }
-    my_putstr(res);
-    return my_strlen(res) + compt;
+    my_revstr_convert(res);
+    return my_strcat(prec, res);
 }

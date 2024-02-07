@@ -7,55 +7,48 @@
 */
 #include "../include/my_printf.h"
 
-static void check_flags_float(long double nb, int *compt, int *list_flagscompt)
+int print_char(va_list list, int *compt, int *list_flagscompt)
 {
-    if (list_flagscompt[4] > 0 && nb > 0) {
-        my_putchar('+');
-        *compt += 1;
-    } else if ( list_flagscompt[3] > 0 && nb > 0) {
+    int width = list_flagscompt[12];
+
+    for (int i = 1; i < width; i++) {
         my_putchar(' ');
         *compt += 1;
     }
-}
-
-int print_float(va_list list, int *compt, int *list_flagscompt)
-{
-    double nb;
-    int precision = 6;
-
-    nb = va_arg(list, double);
-    nb = check_float(nb, list_flagscompt);
-    check_flags_float(nb, compt, list_flagscompt);
-    if (list_flagscompt[5] == 0) {
-        nb = nb > 0 ? nb + 0.5 : nb - 0.5;
-        my_put_nbr((int)nb);
-        *compt += my_intlen(nb);
-        return 1;
-    } else if ( list_flagscompt[5] > 0)
-        precision = list_flagscompt[5];
-    *compt += my_put_float(nb, precision);
-    return 1;
-}
-
-int print_char(va_list list, int *compt, int *list_flagscompt)
-{
     my_putchar(va_arg(list, int));
     *compt += 1;
     return 1;
 }
 
+static void width_str(int len, int *compt, int *list_flagscompt)
+{
+    int width = list_flagscompt[12];
+
+    if ( width < len)
+        return;
+    for (int i = 0; i < width - len; i++) {
+        my_putchar(' ');
+        *compt += 1;
+    }
+}
+
 int print_str(va_list list, int *compt, int *list_flagscompt)
 {
     char *str;
+    int char_print;
+    int precision = list_flagscompt[5];
 
     str = va_arg(list, char *);
-    if ( list_flagscompt[5] > 0) {
-        my_putstr_prec(str, list_flagscompt[5]);
-        if ( list_flagscompt[5] < my_strlen(str))
-            *compt += list_flagscompt[5];
+    if ( precision > 0) {
+        char_print = precision < my_strlen(str) ? precision : my_strlen(str);
+        width_str(char_print, compt, list_flagscompt);
+        my_putstr_prec(str, precision);
+        if ( precision < my_strlen(str))
+            *compt += precision;
         else
             *compt += my_strlen(str);
     } else {
+        width_str(my_strlen(str), compt, list_flagscompt);
         my_putstr(str);
         *compt += my_strlen(str);
     }

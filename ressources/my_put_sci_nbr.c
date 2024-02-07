@@ -7,14 +7,14 @@
 #include "my_printf.h"
 #include "../include/my_macro_abs.h"
 
-static double arround_the_world(double nb)
+static double arround_the_world(long double nb)
 {
     if (nb < 0)
         return -0.5;
     return 0.5;
 }
 
-static int printer(double nb, int nb_mult, int upper, int precision)
+static int printer(long double nb, int nb_mult, int upper, int precision)
 {
     int counter = 1;
 
@@ -38,7 +38,7 @@ static int printer(double nb, int nb_mult, int upper, int precision)
     return counter;
 }
 
-int my_put_sci_nbr(double nb, int upper, int precision)
+int my_put_sci_nbr(long double nb, int upper, int precision)
 {
     int neg;
     double mult;

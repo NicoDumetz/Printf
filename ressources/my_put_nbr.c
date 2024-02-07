@@ -8,7 +8,7 @@
 */
 #include "my_printf.h"
 
-static int is_negative(int nb)
+static int is_negative(long nb)
 {
     if ( nb < 0 ) {
         my_putchar('-');
@@ -17,7 +17,7 @@ static int is_negative(int nb)
     return nb;
 }
 
-int my_put_nbr(int nb)
+int my_put_nbr(long nb)
 {
     long new_nb;
 
@@ -36,7 +36,7 @@ int my_put_nbr(int nb)
     return -nb;
 }
 
-int my_putnbr_prec(int nb, int precision)
+int my_putnbr_prec(long nb, int precision)
 {
     long new_nb;
 

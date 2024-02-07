@@ -7,7 +7,7 @@
 #include "my_printf.h"
 #include "../include/my_macro_abs.h"
 
-static void is_negative(double *nb, double *marge)
+static void is_negative(long double *nb, double *marge)
 {
     if (*nb < 0) {
         *nb *= -1;
@@ -15,7 +15,7 @@ static void is_negative(double *nb, double *marge)
     }
 }
 
-static int put_nbr(double nb)
+static int put_nbr(long double nb)
 {
     if (nb < 0 && ABS(nb) < 1)
         my_putchar('-');
@@ -31,7 +31,7 @@ static int add_len_decimal(char *str, int counter)
     return counter;
 }
 
-static int float_type(double nb, double precision, double *marge)
+static int float_type(long double nb, long double precision, double *marge)
 {
     char *str;
     int counter = (nb < 0) ? 1 : 0;
@@ -54,7 +54,7 @@ static int float_type(double nb, double precision, double *marge)
     return add_len_decimal(str, counter);
 }
 
-static int precision_loop(double nb, int precision)
+static int precision_loop(long double nb, int precision)
 {
     char *str;
 
@@ -71,7 +71,7 @@ static int precision_loop(double nb, int precision)
     return precision - 1;
 }
 
-static int science_precision(double nb, double precision)
+static int science_precision(long double nb, double precision)
 {
     double mult;
     double marge = 0.5;
@@ -86,7 +86,7 @@ static int science_precision(double nb, double precision)
     return precision_loop(nb, precision);
 }
 
-static int get_expos(double nb)
+static int get_expos(long double nb)
 {
     double mult;
     int exp = 0;
@@ -99,7 +99,7 @@ static int get_expos(double nb)
     return exp;
 }
 
-int point_g(double nb, int precision, int upper)
+int point_g(long double nb, int precision, int upper)
 {
     double marge = 0.5;
     int exp;
