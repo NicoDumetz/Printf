@@ -59,7 +59,7 @@ static void float_print(int *compt, int *list_flagscompt, long double nb,
     } else if ( list_flagscompt[3] > 0 && nb > 0)
         char_print++;
     if ( width < float_type(nb,
-	precision - get_expos(ABS(nb)) - 1, &merge) + char_print)
+        precision - get_expos(ABS(nb)) - 1, &merge) + char_print)
         return;
     for (int i = 0; i < width - (float_type(nb,
         precision - get_expos(ABS(nb)) - 1, &merge) + char_print ); i++) {
