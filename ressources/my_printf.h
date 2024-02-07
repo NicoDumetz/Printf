@@ -15,7 +15,6 @@
     #include <errno.h>
     #include <stdint.h>
     #include <stddef.h>
-    #include <wchar.h>
 typedef int(*fonc)();
 typedef struct disp {
     char c;
@@ -63,7 +62,6 @@ int print_a(va_list list, int *compt, int *list_flagscompt);
 int print_a_maj(va_list list, int *compt, int *list_flagscompt);
 int print_bin(va_list list, int *compt, int *list_flagscompt);
 int error_handling(char const *format);
-int print_bin_maj(va_list list, int *compt, int *list_flagscompt);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
@@ -85,7 +83,6 @@ static const disp_t fonc_list[] = {
     {'a', &print_a},
     {'A', &print_a_maj},
     {'b', &print_bin},
-    {'B', &print_bin_maj},
     {0, NULL}
 };
 

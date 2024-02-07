@@ -117,21 +117,17 @@ int print_a_maj(va_list list, int *compt, int *list_flagscompt)
 static void print_width_b(int *compt, int *list_flagscompt, char *str)
 {
     int width = list_flagscompt[12];
-    int zero = ' ';
-    int char_print = 0;
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
-    if (list_flagscompt[0] > 0) {
-        char_print += 2;
-    }
-    if ( width < my_strlen(str) + char_print)
+    if ( width < my_strlen(str))
         return;
-    for (int i = 0; i < width - (my_strlen(str) + char_print); i++) {
+    for (int i = 0; i < width - my_strlen(str); i++) {
         my_putchar(zero);
         *compt += 1;
     }
     if (list_flagscompt[0] > 0) {
-        my_putstr("0b");
-        *compt += 2;
+        my_putstr("0");
+        *compt += 1;
     }
 }
 

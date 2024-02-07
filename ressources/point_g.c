@@ -7,14 +7,6 @@
 #include "my_printf.h"
 #include "../include/my_macro_abs.h"
 
-static void is_negative(long double *nb, double *marge)
-{
-    if (*nb < 0) {
-        *nb *= -1;
-        *nb += *marge;
-    }
-}
-
 static int put_nbr(long double nb)
 {
     if (nb < 0 && ABS(nb) < 1)
@@ -40,13 +32,12 @@ static int float_type(long double nb, long double precision, double *marge)
     for (int k = 0; k < precision; k++)
         *marge /= 10;
     nb += (nb >= 0) ? *marge : -(*marge);
+    nb = (nb < 0.0) ? -nb : nb;
     counter += my_intlen(nb);
     nb += put_nbr(nb);
-    is_negative(&nb, marge);
     str = malloc(precision + 1);
     str[0] = '.';
     for (int k = 0; k < precision; k++) {
-        *marge /= 10;
         nb *= 10;
         str[k + 1] = ((int)nb % 10) + '0';
         nb = nb - (((int)nb / 10) * 10);

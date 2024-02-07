@@ -10,7 +10,7 @@ static void print_width(int *compt, int *list_flagscompt, char *str)
 {
     int width = list_flagscompt[12];
     int char_print = 0;
-    int zero = ' ';
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if (list_flagscompt[0] > 0) {
         char_print += 2;
@@ -31,7 +31,7 @@ static void print_width_o(int *compt, int *list_flagscompt, char *str)
 {
     int width = list_flagscompt[12];
     int char_print = 0;
-    int zero = ' ';
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if (list_flagscompt[0] > 0) {
         char_print += 1;
@@ -47,7 +47,7 @@ static void print_width_o(int *compt, int *list_flagscompt, char *str)
 static void print_width_d(int *compt, int *list_flagscompt, char *str)
 {
     int width = list_flagscompt[12];
-    int zero = ' ';
+    int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     if ( width < my_strlen(str))
         return;
@@ -133,27 +133,6 @@ int print_hex(va_list list, int *compt, int *list_flagscompt)
     return 1;
 }
 
-static void print_width_maj(int *compt, int *list_flagscompt, char *str)
-{
-    int width = list_flagscompt[12];
-    int char_print = 0;
-    int zero = ' ';
-
-    if (list_flagscompt[0] > 0) {
-        char_print += 2;
-    }
-    if ( width < my_strlen(str) + char_print)
-        return;
-    for (int i = 0; i < width - (my_strlen(str) + char_print); i++) {
-        my_putchar(zero);
-        *compt += 1;
-    }
-    if (list_flagscompt[0] > 0) {
-        my_putstr("0X");
-        *compt += 2;
-    }
-}
-
 int print_hex_maj(va_list list, int *compt, int *list_flagscompt)
 {
     int nb;
@@ -168,10 +147,10 @@ int print_hex_maj(va_list list, int *compt, int *list_flagscompt)
     } else
         str = my_put_convert_base(nb, "0123456789ABCDEF");
     if ( list_flagscompt[2] == 0)
-        print_width_maj(compt, list_flagscompt, str);
+        print_width(compt, list_flagscompt, str);
     my_putstr(str);
     if ( list_flagscompt[2] > 0)
-        print_width_maj(compt, list_flagscompt, str);
+        print_width(compt, list_flagscompt, str);
     *compt += my_strlen(str);
     if ( list_flagscompt[5] >= 0)
         free(str);

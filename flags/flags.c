@@ -9,10 +9,11 @@
 
 int print_char(va_list list, int *compt, int *list_flagscompt)
 {
+    int width = list_flagscompt[12];
     int zero = ' ';
 
     if ( list_flagscompt[2] == 0) {
-        for (int i = 1; i < list_flagscompt[12]; i++) {
+        for (int i = 1; i < width; i++) {
             my_putchar(zero);
             *compt += 1;
         }
@@ -22,7 +23,7 @@ int print_char(va_list list, int *compt, int *list_flagscompt)
     else
         my_putchar(va_arg(list, int));
     if ( list_flagscompt[2] > 0) {
-        for (int i = 1; i < list_flagscompt[12]; i++) {
+        for (int i = 1; i < width; i++) {
             my_putchar(zero);
             *compt += 1;
         }
@@ -84,50 +85,5 @@ int print_mod(va_list list, int *compt, int *list_flagscompt)
 {
     my_putchar('%');
     *compt += 1;
-    return 1;
-}
-
-static void print_width_maj(int *compt, int *list_flagscompt, char *str)
-{
-    int width = list_flagscompt[12];
-    int zero = ' ';
-    int char_print = 0;
-
-    if (list_flagscompt[0] > 0) {
-        char_print += 2;
-    }
-    if ( width < my_strlen(str) + char_print)
-        return;
-    for (int i = 0; i < width - (my_strlen(str) + char_print); i++) {
-        my_putchar(zero);
-        *compt += 1;
-    }
-    if (list_flagscompt[0] > 0) {
-        my_putstr("0B");
-        *compt += 2;
-    }
-}
-
-int print_bin_maj(va_list list, int *compt, int *list_flagscompt)
-{
-    long nb;
-    int precision;
-    char *str;
-
-    nb = check_int_u(list, list_flagscompt);
-    nb = list_flagscompt[6] == 2 ? (unsigned char)nb : nb;
-    if ( list_flagscompt[5] >= 0) {
-        precision = list_flagscompt[5];
-        str = my_put_convert_base_prec(nb, "01", precision);
-    } else
-        str = my_put_convert_base(nb, "01");
-    if ( list_flagscompt[2] == 0)
-        print_width_maj(compt, list_flagscompt, str);
-    my_putstr(str);
-    if ( list_flagscompt[2] > 0)
-        print_width_maj(compt, list_flagscompt, str);
-    *compt += my_strlen(str);
-    if ( list_flagscompt[5] >= 0)
-        free(str);
     return 1;
 }
