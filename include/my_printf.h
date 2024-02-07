@@ -28,6 +28,11 @@ int print_mod(va_list list, int *compt);
 int my_printf(const char *format, ...);
 int my_put_float(double nb, int precision);
 int print_float(va_list list, int *compt);
+int my_put_convert_base(unsigned int nb, char *base);
+int print_oct(va_list list, int *compt);
+int print_dec(va_list list, int *compt);
+int print_hex(va_list list, int *compt);
+int print_hex_maj(va_list list, int *compt);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
@@ -35,6 +40,10 @@ static const disp_t fonc_list[] = {
     {'c', &print_char},
     {'%', &print_mod},
     {'f', &print_float},
+    {'o', &print_oct},
+    {'u', &print_dec},
+    {'x', &print_hex},
+    {'X', &print_hex_maj},
     {0, NULL}
 };
 
