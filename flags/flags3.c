@@ -37,3 +37,11 @@ int print_compt(va_list list, int *compt)
     *var = *compt;
     return 1;
 }
+
+int print_g(va_list list, int *compt)
+{
+    point_g(va_arg(list, double));
+    *compt += 1;
+    return 1;
+
+}

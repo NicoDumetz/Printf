@@ -44,6 +44,8 @@ int my_put_convert_base_ptr(unsigned long long nb, char *base);
 int print_science_lowercase(va_list list, int *compt);
 int print_science_uppercase(va_list list, int *compt);
 int print_compt(va_list list, int *compt);
+int print_g(va_list list, int *compt);
+int point_g(double nb);
 static const disp_t fonc_list[] = {
     {'d', &print_int},
     {'i', &print_int},
@@ -59,6 +61,7 @@ static const disp_t fonc_list[] = {
     {'E', &print_science_uppercase},
     {'p', &print_adresse},
     {'n', &print_compt},
+    {'g', &print_g},
     {0, NULL}
 };
 

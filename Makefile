@@ -17,6 +17,7 @@ SRC =	$(RESSOURCES_PATH)/my_convert_base.c \
 	$(RESSOURCES_PATH)/my_put_float.c \
 	$(RESSOURCES_PATH)/my_put_sci_nbr.c \
 	$(RESSOURCES_PATH)/my_strlen.c \
+	$(RESSOURCES_PATH)/point_g.c \
 	$(FLAGS_PATH)/flags.c \
 	$(FLAGS_PATH)/flags2.c \
 	$(FLAGS_PATH)/flags3.c \
