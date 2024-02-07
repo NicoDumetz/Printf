@@ -22,7 +22,6 @@ int my_put_float(long double nb, int precision)
     int compt = my_intlen(ABS(nb));
 
     is_negative(&nb, &compt);
-    printf("%Lf\n", nb);
     for (int k = 0; k < precision; k++) {
         marge /= 10;
     }
