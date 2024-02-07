@@ -20,7 +20,8 @@ void print(const char *format, va_list list, int *compt, int *i)
     if ( format[*i] == '.') {
         *i += 1;
         list_flagscompt[5] = my_getnbr(format + *i);
-        *i += my_intlen(list_flagscompt[5]);
+        if (list_flagscompt[5] != 0)
+            *i += my_intlen(list_flagscompt[5]);
     }
     for ( int j = 0; fonc_list[j].c; j++) {
         if (format[*i] == fonc_list[j].c)
