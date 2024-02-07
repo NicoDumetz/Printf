@@ -12,7 +12,7 @@ int my_put_float(double nb, int precision)
     int power = 1;
 
     for (int k = 0; k <= precision; k++) {
-	power *= 10;
+        power *= 10;
     }
     marge /= power;
     nb -= my_put_nbr(nb);
