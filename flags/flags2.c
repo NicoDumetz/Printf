@@ -1,10 +1,11 @@
+
 /*
 ** EPITECH PROJECT, 2023
 ** opgzejpgzijozgpe
 ** File description:
 ** lzegougzoehi
 */
-#include "include/my_printf.h"
+#include "../include/my_printf.h"
 
 int print_int(va_list list, int *compt)
 {

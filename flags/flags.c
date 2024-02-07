@@ -5,7 +5,7 @@
 ** list of function used by my_printf
 ** that initialize variable to execute asked specification
 */
-#include "include/my_printf.h"
+#include "../include/my_printf.h"
 
 int print_float(va_list list, int *compt)
 {

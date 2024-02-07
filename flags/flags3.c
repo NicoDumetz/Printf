@@ -4,7 +4,7 @@
 ** File description:
 ** flags3 file
 */
-#include "include/my_printf.h"
+#include "../include/my_printf.h"
 
 int print_science(va_list list, int *compt)
 {
