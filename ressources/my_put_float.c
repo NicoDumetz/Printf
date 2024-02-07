@@ -9,13 +9,11 @@
 int my_put_float(double nb, int precision)
 {
     double marge = 0.5;
-    int power = 1;
     int compt = my_intlen(nb);
 
-    for (int k = 0; k <= precision; k++) {
-        power *= 10;
+    for (int k = 0; k < precision; k++) {
+        marge /= 10;
     }
-    marge /= power;
     nb -= my_put_nbr(nb);
     my_putchar('.');
     compt++;
