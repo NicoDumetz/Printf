@@ -67,7 +67,7 @@ int my_put_convert_base_prec(unsigned int nb, char *base, int precision)
     res[index] = '\0';
     my_revstr_convert(res);
     if ( precision > my_strlen(res)) {
-        for (int i; i < precision - my_strlen(res); i++) {
+        for (int i = 0 ; i < precision - my_strlen(res); i++) {
             my_putchar('0');
             compt++;
         }
