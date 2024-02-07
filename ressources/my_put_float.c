@@ -26,7 +26,6 @@ int my_put_float(long double nb, int precision)
     for (int k = 0; k < precision; k++) {
         marge /= 10;
     }
-    printf("printf debug%ld\n", (long)nb);
     nb += my_put_nbr((long)nb);
     my_putchar('.');
     compt++;
