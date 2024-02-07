@@ -18,7 +18,10 @@ int print_char(va_list list, int *compt, int *list_flagscompt)
             *compt += 1;
         }
     }
-    my_putchar(va_arg(list, int));
+    if ( list_flagscompt[7] == 1)
+        my_putchar(va_arg(list, wint_t));
+    else
+        my_putchar(va_arg(list, int));
     if ( list_flagscompt[2] > 0) {
         for (int i = 1; i < width; i++) {
             my_putchar(zero);
