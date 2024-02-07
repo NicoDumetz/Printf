@@ -13,7 +13,7 @@ static void print_width_e(int *compt, int *list_flagscompt, long double *nb,
     int zero = list_flagscompt[1] > 0 && list_flagscompt[2] == 0 ? '0' : ' ';
 
     char_print += *nb < 0 ? 1 : 0;
-    if ( zero == '0') {
+    if ( zero == '0' && *nb < 0) {
         my_putchar('-');
         *nb *= -1;
     }

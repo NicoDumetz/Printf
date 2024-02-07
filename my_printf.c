@@ -78,7 +78,7 @@ int my_printf(const char *format, ...)
     int compt = 0;
     int i;
 
-    if (error_handling(format) || fatal_error_handling(format))
+    if (error_handling(format))
         return -1;
     va_start(list, format);
     for (i = 0; i < my_strlen(format); i++) {

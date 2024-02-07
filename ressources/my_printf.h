@@ -63,7 +63,6 @@ int print_a(va_list list, int *compt, int *list_flagscompt);
 int print_a_maj(va_list list, int *compt, int *list_flagscompt);
 int print_bin(va_list list, int *compt, int *list_flagscompt);
 int error_handling(char const *format);
-int fatal_error_handling(char const *format);
 int print_bin_maj(va_list list, int *compt, int *list_flagscompt);
 int science_precision(long double nb, double precision);
 int get_expos(long double nb);
