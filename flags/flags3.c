@@ -6,7 +6,6 @@
 ** flags3 file
 */
 #include "../include/my_printf.h"
-#include "string.h"
 
 int print_science(va_list list, int *compt)
 {
