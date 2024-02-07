@@ -19,7 +19,7 @@ static int put_nbr(long double nb)
 
 static int add_len_decimal(char *str, int counter)
 {
-    if (str[1]) {
+    if (str[1] >= 48 && str[1] <= 57) {
         my_printf("%s", str);
         counter += my_strlen(str);
     }
