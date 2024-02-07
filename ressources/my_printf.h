@@ -68,9 +68,10 @@ static const disp_t fonc_list[] = {
     {'n', &print_compt},
     {'g', &print_g},
     {'G', &print_g_maj},
+    {'F', &print_float},
     {0, NULL}
 };
 
 static const char list_flags[] = {'#', '0', '-', ' ', '+', 0};
-
+static const char list_modi[] = {'h', 'l', 'j', 'z', 't', 'L', 0};
 #endif
