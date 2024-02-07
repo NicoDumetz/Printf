@@ -28,6 +28,7 @@ static int add_len_decimal(char *str, int counter)
         my_printf("%s", str);
         counter += my_strlen(str);
     }
+    free(str);
     return counter;
 }
 
@@ -69,6 +70,7 @@ static int precision_loop(long double nb, int precision)
             break;
         precision--;
     }
+    free(str);
     return precision - 1;
 }
 
