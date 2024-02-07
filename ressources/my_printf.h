@@ -15,6 +15,7 @@
     #include <errno.h>
     #include <stdint.h>
     #include <stddef.h>
+    #include <wchar.h>
 typedef int(*fonc)();
 typedef struct disp {
     char c;

@@ -9,11 +9,10 @@
 
 int print_char(va_list list, int *compt, int *list_flagscompt)
 {
-    int width = list_flagscompt[12];
     int zero = ' ';
 
     if ( list_flagscompt[2] == 0) {
-        for (int i = 1; i < width; i++) {
+        for (int i = 1; i < list_flagscompt[12]; i++) {
             my_putchar(zero);
             *compt += 1;
         }
@@ -23,7 +22,7 @@ int print_char(va_list list, int *compt, int *list_flagscompt)
     else
         my_putchar(va_arg(list, int));
     if ( list_flagscompt[2] > 0) {
-        for (int i = 1; i < width; i++) {
+        for (int i = 1; i < list_flagscompt[12]; i++) {
             my_putchar(zero);
             *compt += 1;
         }

@@ -56,7 +56,7 @@ int print_int(va_list list, int *compt, int *list_flagscompt)
 
     nb = check_int(list, list_flagscompt);
     if ( list_flagscompt[6] == 2)
-        nb = (char)nb;
+        nb = (signed char)nb;
     if ( list_flagscompt[5] > my_intlen(nb)) {
         precision = list_flagscompt[5];
         if ( list_flagscompt[2] == 0)
