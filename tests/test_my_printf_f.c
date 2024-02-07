@@ -106,7 +106,7 @@ Test(specificateur_f, plus_on_pos_value2, .init = redirect_all_stdout)
 Test(specificateur_f, get_gabariz, .init = redirect_all_stdout)
 {
     my_printf("%*f", 10, 12.34);
-    cr_assert_stdout_eq_str(" 12.34000");
+    cr_assert_stdout_eq_str(" 12.340000");
 }
 
 Test(specificateur_f, gabariz, .init = redirect_all_stdout)
@@ -184,10 +184,10 @@ Test(specificateur_f, modi_tt, .init = redirect_all_stdout)
 Test(specificateur_f, mix_test, .init = redirect_all_stdout)
 {
     my_printf("%-10.2f bananes", 123.456);
-    cr_assert_stdout_eq_str("123.46    bananes");
+    cr_assert_stdout_eq_str("123.46     bananes");
 }
 
 Test(specificateur_f, mix_test_return_avlue, .init = redirect_all_stdout)
 {
-    cr_assert(my_printf("%-10.2f bananes", 123.456) == 17);
+    cr_assert(my_printf("%-10.2f bananes", 123.456) == 18);
 }
