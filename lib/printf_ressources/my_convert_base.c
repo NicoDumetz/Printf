@@ -25,9 +25,9 @@ int my_put_convert_base(unsigned int nb, char *base)
 {
     int len = my_strlen(base);
     char res[300000];
-    int index = 0;
+    int index;
 
-    for (index; nb > 0; index++) {
+    for (index = 0; nb > 0; index++) {
         res[index] = base[nb % len];
         nb /= len;
     }
