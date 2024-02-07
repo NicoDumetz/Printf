@@ -14,6 +14,8 @@ int my_intlen(int nb)
         compt++;
         nb = nb * -1;
     }
+    if (nb == 0)
+        return compt + 1;
     for (int i; nb > 0; i++) {
         compt++;
         nb /= 10;

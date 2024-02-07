@@ -90,9 +90,8 @@ static int get_expos(double nb)
     return exp;
 }
 
-int point_g(double nb)
+int point_g(double nb, int precision)
 {
-    int precision = 6;
     double marge = 0.5;
     int exp;
 
